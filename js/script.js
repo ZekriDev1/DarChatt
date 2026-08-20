@@ -5,6 +5,25 @@ document.addEventListener("DOMContentLoaded", () => {
     const mobileMenuButton = document.getElementById("mobileMenuButton");
     const navLinks = document.getElementById("navLinks");
 
+    // Logo from admin settings (site.logo_url), fallback to local file
+    const supabase = window.DarChattSupabase;
+    if (supabase) {
+        supabase
+            .from("settings")
+            .select("value")
+            .eq("key", "site")
+            .maybeSingle()
+            .then((result) => {
+                if (result.error) return;
+                const site = (result.data && result.data.value) || {};
+                if (site.logo_url) {
+                    document.querySelectorAll(".nav-logo, .auth-logo").forEach((img) => {
+                        img.src = site.logo_url;
+                    });
+                }
+            });
+    }
+
     if (dropdown && button && menu) {
         let openedByHover = false;
 

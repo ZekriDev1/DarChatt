@@ -10,6 +10,23 @@
 
     var supabase = window.DarChattSupabase;
 
+    // Logo from admin settings (site.logo_url), fallback to local file
+    if (supabase) {
+        supabase
+            .from("settings")
+            .select("value")
+            .eq("key", "site")
+            .maybeSingle()
+            .then(function (result) {
+                if (result.error) return;
+                var site = (result.data && result.data.value) || {};
+                if (site.logo_url) {
+                    var img = document.querySelector(".auth-logo");
+                    if (img) img.src = site.logo_url;
+                }
+            });
+    }
+
     function getRedirectTarget() {
         try {
             var redirect = new URLSearchParams(window.location.search).get("redirect");
