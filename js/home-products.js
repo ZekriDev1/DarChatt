@@ -93,14 +93,26 @@
             priceHtml = '<span class="product-price">' + formatPrice(product.price) + "</span>";
         }
 
+        var cartButton = outOfStock
+            ? '<button type="button" class="product-add-cart" disabled>نفد المخزون</button>'
+            : '<button type="button" class="product-add-cart" ' +
+              'data-add-cart-id="' + escapeHtml(product.id) + '" ' +
+              'data-add-cart-name="' + escapeHtml(name) + '" ' +
+              'data-add-cart-price="' + escapeHtml(String(product.price)) + '" ' +
+              'data-add-cart-image="' + escapeHtml(product.image_url || "") + '" ' +
+              '>أضف إلى السلة</button>';
+
         return (
-            '<a class="product-card" href="product.html?id=' + encodeURIComponent(product.id) + '">' +
+            '<div class="product-card">' +
+            '<a class="product-card-main" href="product.html?id=' + encodeURIComponent(product.id) + '">' +
             '<div class="product-media">' + imageHtml + badges + "</div>" +
             '<div class="product-info">' +
             '<h3 class="product-name">' + escapeHtml(name) + "</h3>" +
             '<div class="product-price-row">' + priceHtml + "</div>" +
             "</div>" +
-            "</a>"
+            "</a>" +
+            '<div class="product-card-actions">' + cartButton + "</div>" +
+            "</div>"
         );
     }
 
@@ -115,6 +127,33 @@
         if (elements.empty) elements.empty.hidden = true;
 
         elements.grid.innerHTML = products.map(cardHtml).join("");
+    }
+
+    function bindCartClicks() {
+        if (!elements.grid) return;
+
+        elements.grid.addEventListener("click", function (event) {
+            var button = event.target.closest("[data-add-cart-id]");
+            if (!button) return;
+
+            var cart = window.DarChattCart;
+            if (!cart) return;
+
+            cart.add({
+                id: button.getAttribute("data-add-cart-id"),
+                name_ar: button.getAttribute("data-add-cart-name"),
+                price: Number(button.getAttribute("data-add-cart-price")),
+                image_url: button.getAttribute("data-add-cart-image")
+            });
+
+            var original = button.textContent;
+            button.textContent = "تمت الإضافة ✓";
+            button.classList.add("is-added");
+            setTimeout(function () {
+                button.textContent = original;
+                button.classList.remove("is-added");
+            }, 1200);
+        });
     }
 
     async function fetchProducts() {
@@ -143,6 +182,8 @@
     function init() {
         cacheElements();
         if (!supabase || !elements.grid) return;
+
+        bindCartClicks();
 
         if (elements.retryButton) {
             elements.retryButton.addEventListener("click", load);

@@ -34,7 +34,7 @@ create policy "settings_public_read"
 --
 -- Stored under settings key 'hero' as JSON:
 --   {
---     "heading":    "أهلاً بكم في دار شاط",
+--     "heading":    "أهلاً بكم في دار الشاط",
 --     "subheading": "تشكيلة فاخرة من العطور والإكسسوارات",
 --     "images":     ["https://.../hero/slide-1.jpg", ...]
 --   }
@@ -45,7 +45,7 @@ create policy "settings_public_read"
 insert into public.settings (key, value)
 values (
     'hero',
-    '{"heading":"أهلاً بكم في دار شاط","subheading":"تشكيلة فاخرة من العطور والإكسسوارات","images":[]}'::jsonb
+    '{"heading":"أهلاً بكم في دار الشاط","subheading":"تشكيلة فاخرة من العطور والإكسسوارات","images":[]}'::jsonb
 )
 on conflict (key) do nothing;
 

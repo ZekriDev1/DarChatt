@@ -63,7 +63,7 @@ create table if not exists public.products (
     check (not is_sale or old_price is not null)
 );
 
-comment on table public.products is 'منتجات دار شاط';
+comment on table public.products is 'منتجات دار الشاط';
 comment on column public.products.images is 'مصفوفة روابط صور المنتج بالترتيب (الأولى هي الرئيسية)';
 
 create index if not exists products_category_idx on public.products (category_id);

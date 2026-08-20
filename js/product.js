@@ -138,7 +138,7 @@
     function renderInfo() {
         var title = productTitle();
 
-        document.title = product.meta_title || title + " — دار شاط";
+        document.title = product.meta_title || title + " — دار الشاط";
 
         var meta = document.querySelector('meta[name="description"]');
         if (meta && product.meta_description) {

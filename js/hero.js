@@ -47,7 +47,7 @@
         if (elements.placeholder) {
             var title = elements.placeholder.querySelector(".hero-title");
             var subtitle = elements.placeholder.querySelector(".hero-subtitle");
-            if (title) title.textContent = state.heading || "أهلاً بكم في دار شاط";
+            if (title) title.textContent = state.heading || "أهلاً بكم في دار الشاط";
             if (subtitle) subtitle.textContent = state.subheading || "تشكيلة فاخرة من العطور والإكسسوارات";
             elements.placeholder.hidden = false;
         }
@@ -59,11 +59,11 @@
         elements.slides.innerHTML = state.images.map(function (image, index) {
             return (
                 '<div class="hero-slide' + (index === state.current ? " is-active" : "") +
-                '" style="background-image:url(' + escapeHtml(image) + ')">' +
+                '" style="background-image:url(' + "'" + escapeHtml(image) + "'" + ')">' +
                 '<div class="hero-slide-overlay"></div>' +
                 '<div class="hero-slide-content">' +
-                '<p class="hero-eyebrow">دار شاط</p>' +
-                '<h1 class="hero-title">' + escapeHtml(state.heading || "أهلاً بكم في دار شاط") + "</h1>" +
+                '<p class="hero-eyebrow">دار الشاط</p>' +
+                '<h1 class="hero-title">' + escapeHtml(state.heading || "أهلاً بكم في دار الشاط") + "</h1>" +
                 '<p class="hero-subtitle">' + escapeHtml(state.subheading || "تشكيلة فاخرة من العطور والإكسسوارات") + "</p>" +
                 '<a href="shop.html" class="hero-cta">تسوق الآن</a>' +
                 "</div>" +

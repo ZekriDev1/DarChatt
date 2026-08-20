@@ -34,7 +34,7 @@ create table if not exists public.categories (
     check (parent_id <> id)
 );
 
-comment on table public.categories is 'تصنيفات دار شاط';
+comment on table public.categories is 'تصنيفات دار الشاط';
 comment on column public.categories.slug is 'رابط مختصر فريد';
 comment on column public.categories.parent_id is 'التصنيف الرئيسي (يدعم مستويات غير محدودة)';
 

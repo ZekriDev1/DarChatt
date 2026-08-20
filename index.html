@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>دار شاط</title>
+    <title>دار الشاط</title>
 
     <meta
         name="description"
-        content="دار شاط - متجر إلكتروني"
+        content="دار الشاط - متجر إلكتروني"
     >
 
     <link rel="stylesheet" href="css/style.css">
@@ -29,11 +29,11 @@
             <a
                 href="index.html"
                 class="logo-link"
-                aria-label="دار شاط - الصفحة الرئيسية"
+                aria-label="دار الشاط - الصفحة الرئيسية"
             >
                 <img
                     src="assets/logo.png"
-                    alt="دار شاط"
+                    alt="دار الشاط"
                     class="nav-logo"
                 >
             </a>
@@ -154,7 +154,7 @@
                 <!-- Search -->
                 <a
                     href="javascript:void(0)"
-                    class="nav-icon"
+                    class="nav-icon search-icon"
                     aria-label="البحث"
                 >
                     <svg
@@ -315,8 +315,8 @@
 
             <div class="hero-placeholder" id="heroPlaceholder" hidden>
                 <div class="hero-placeholder-inner">
-                    <p class="hero-eyebrow">دار شاط</p>
-                    <h1 class="hero-title">أهلاً بكم في دار شاط</h1>
+                    <p class="hero-eyebrow">دار الشاط</p>
+                    <h1 class="hero-title">أهلاً بكم في دار الشاط</h1>
                     <p class="hero-subtitle">تشكيلة فاخرة من العطور والإكسسوارات</p>
                     <a href="shop.html" class="hero-cta">تسوق الآن</a>
                 </div>
@@ -328,6 +328,7 @@
         <section
             id="home-categories"
             class="home-categories"
+            data-reveal
         >
             <div class="home-categories-inner">
 
@@ -345,7 +346,31 @@
                     <button type="button" class="filter-button" id="homeCategoriesRetry">إعادة المحاولة</button>
                 </div>
 
-                <div class="home-categories-grid" id="homeCategoriesGrid"></div>
+                <div class="home-categories-carousel">
+
+                    <button
+                        type="button"
+                        class="home-category-arrow home-category-arrow-prev"
+                        id="homeCategoriesPrev"
+                        aria-label="التصنيف السابق"
+                        hidden
+                    >‹</button>
+
+                    <div class="home-categories-viewport">
+                        <div class="home-categories-slide" id="homeCategoriesSlide"></div>
+                    </div>
+
+                    <button
+                        type="button"
+                        class="home-category-arrow home-category-arrow-next"
+                        id="homeCategoriesNext"
+                        aria-label="التصنيف التالي"
+                        hidden
+                    >›</button>
+
+                </div>
+
+                <div class="home-categories-dots" id="homeCategoriesDots" hidden></div>
 
                 <div class="home-categories-empty" id="homeCategoriesEmpty" hidden>
                     <p>لا توجد تصنيفات بعد — ترقبوا الجديد!</p>
@@ -359,6 +384,7 @@
         <section
             id="home-products"
             class="home-products"
+            data-reveal
         >
             <div class="home-products-inner">
 
@@ -394,14 +420,15 @@
         <section
             id="about"
             class="about"
+            data-reveal
         >
             <div class="about-inner">
 
                 <p class="section-eyebrow">من نحن</p>
-                <h2 class="section-title">دار شاط</h2>
+                <h2 class="section-title">دار الشاط</h2>
 
                 <p class="about-text">
-                    دار شاط وجهتكم الأولى للعطور الفاخرة والبخور والأصالة المغربية.
+                    دار الشاط وجهتكم الأولى للعطور الفاخرة والبخور والأصالة المغربية.
                     نختار لكم أجود أنواع العطور والإكسسوارات واللوازم الإسلامية
                     بعناية فائقة، لنقدم لكم تجربة تسوق راقية تجمع بين الأصالة والجودة.
                 </p>
@@ -454,14 +481,14 @@
          Footer
     ========================== -->
 
-    <footer class="footer">
+    <footer class="footer" data-reveal>
 
         <div class="footer-container">
 
             <div class="footer-grid">
 
                 <div class="footer-col footer-about">
-                    <p class="footer-brand">دار شاط</p>
+                    <p class="footer-brand">دار الشاط</p>
                     <p class="footer-desc">تشكيلة فاخرة من العطور والإكسسوارات واللوازم الإسلامية.</p>
                 </div>
 
@@ -500,7 +527,7 @@
                         class="footer-map"
                         id="footerMap"
                         src=""
-                        title="خريطة موقع دار شاط"
+                        title="خريطة موقع دار الشاط"
                         loading="lazy"
                         allowfullscreen
                         referrerpolicy="no-referrer-when-downgrade"
@@ -514,7 +541,7 @@
 
         <div class="footer-bottom">
 
-            <p>© 2026 دار شاط. جميع الحقوق محفوظة.</p>
+            <p>© 2026 دار الشاط. جميع الحقوق محفوظة.</p>
 
         </div>
 
@@ -533,6 +560,15 @@
 
     <!-- Supabase Functions -->
     <script src="js/supabase.js"></script>
+
+    <!-- Cart -->
+    <script src="js/cart.js"></script>
+
+    <!-- Search -->
+    <script src="js/search.js"></script>
+
+    <!-- Scroll Reveal -->
+    <script src="js/reveal.js"></script>
 
     <!-- Categories -->
     <script src="js/nav-categories.js"></script>
