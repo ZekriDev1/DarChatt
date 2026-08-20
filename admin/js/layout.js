@@ -139,7 +139,7 @@
 
         sidebar.innerHTML =
             '<div class="sidebar-header">' +
-            '<img src="../assets/logo.png" alt="دار الشاط" class="sidebar-logo">' +
+            '<img src="../logo.png" alt="دار الشاط" class="sidebar-logo">' +
             '<button type="button" class="sidebar-close" aria-label="إغلاق القائمة">×</button>' +
             "</div>" +
             '<nav class="sidebar-nav">' + navHtml + "</nav>" +
