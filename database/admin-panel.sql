@@ -108,7 +108,8 @@ create table if not exists public.orders (
     updated_at      timestamptz not null default now()
 );
 
-comment on table public.orders is 'طلبات دار شاط — الدفع عند الاستلام فقط';
+comment on table public.orders is 'طلباتدار الشاط
+— الدفع عند الاستلام فقط';
 comment on column public.orders.status is 'حالة الطلب: جديد/مؤكد/قيد التجهيز/جاهز للشحن/تم الشحن/مكتمل/ملغى';
 
 create index if not exists orders_customer_idx on public.orders (customer_id);

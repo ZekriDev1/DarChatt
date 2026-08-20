@@ -32,7 +32,8 @@ create table if not exists public.profiles (
     updated_at  timestamptz not null default now()
 );
 
-comment on table public.profiles is 'مستخدمي دار شاط مع صلاحياتهم';
+comment on table public.profiles is 'مستخدميدار الشاط
+مع صلاحياتهم';
 comment on column public.profiles.role is 'admin أو customer فقط';
 
 -- Keep updated_at current on every change
