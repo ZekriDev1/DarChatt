@@ -1,6 +1,9 @@
 // =============================================================
 // Dar Chatt — Navbar Account Dropdown (user icon)
 //
+// Desktop (≥1024px): hover/click dropdown in the header bar.
+// Mobile (<1024px): accordion inside the drawer.
+//
 // Guest  -> تسجيل الدخول / إنشاء حساب
 // User   -> حسابي / طلباتي / تسجيل الخروج
 // Admin  -> حسابي / طلباتي / الإدارة / تسجيل الخروج
@@ -15,9 +18,15 @@
 
     var supabase = window.DarChattSupabase;
 
+    // Desktop dropdown
     var dropdown = document.getElementById("accountDropdown");
     var button = document.getElementById("accountButton");
     var container = document.getElementById("accountMenuItems");
+
+    // Mobile accordion (inside the drawer)
+    var mobileDropdown = document.getElementById("mobileAccountDropdown");
+    var mobileButton = document.getElementById("mobileAccountButton");
+    var mobileContainer = document.getElementById("mobileAccountMenuItems");
 
     var sessionRole = null;
     var openedByHover = false;
@@ -33,11 +42,14 @@
 
     // Hover works only on real desktop pointers (not touch devices).
     function isDesktop() {
-        return window.matchMedia("(hover: hover) and (min-width: 901px)").matches;
+        return (
+            window.matchMedia("(hover: hover)").matches &&
+            window.innerWidth >= 1024
+        );
     }
 
     // ---------------------------------------------------------
-    // Open / close
+    // Open / close (desktop dropdown)
     // ---------------------------------------------------------
 
     function openMenu() {
@@ -56,42 +68,42 @@
     // Menu rendering
     // ---------------------------------------------------------
 
-    function renderLoading() {
-        if (container) {
-            container.innerHTML =
+    function renderLoading(target) {
+        if (target) {
+            target.innerHTML =
                 '<div class="dropdown-state-item">جاري التحميل...</div>';
         }
     }
 
-    function renderError() {
-        if (container) {
-            container.innerHTML =
+    function renderError(target) {
+        if (target) {
+            target.innerHTML =
                 '<div class="dropdown-state-item dropdown-state-error">تعذر تحميل القائمة</div>';
         }
     }
 
-    function renderGuest() {
-        container.innerHTML =
+    function renderGuest(target) {
+        target.innerHTML =
             '<a class="account-item" href="signin.html">تسجيل الدخول</a>' +
             '<a class="account-item" href="signin.html#signup">إنشاء حساب</a>';
     }
 
-    function renderUser() {
+    function renderUser(target) {
         var adminItem = "";
         if (sessionRole === "admin") {
             adminItem = '<a class="account-item" href="/admin/">الإدارة</a>';
         }
 
-        container.innerHTML =
+        target.innerHTML =
             '<a class="account-item" href="index.html">حسابي</a>' +
             '<a class="account-item" href="index.html">طلباتي</a>' +
             adminItem +
             '<div class="dropdown-divider"></div>' +
-            '<button type="button" class="account-item account-item-danger" id="accountLogoutButton">' +
+            '<button type="button" class="account-item account-item-danger">' +
             "تسجيل الخروج" +
             "</button>";
 
-        var logoutButton = document.getElementById("accountLogoutButton");
+        var logoutButton = target.querySelector(".account-item-danger");
         if (logoutButton) {
             logoutButton.addEventListener("click", logout);
         }
@@ -102,12 +114,12 @@
     // ---------------------------------------------------------
 
     async function refreshMenu() {
-        if (!container) return;
-
-        renderLoading();
+        renderLoading(container);
+        renderLoading(mobileContainer);
 
         if (!supabase) {
-            renderError();
+            renderError(container);
+            renderError(mobileContainer);
             return;
         }
 
@@ -119,7 +131,8 @@
 
             if (!session) {
                 sessionRole = null;
-                renderGuest();
+                renderGuest(container);
+                renderGuest(mobileContainer);
                 return;
             }
 
@@ -135,14 +148,16 @@
                 sessionRole = roleResult.data.role;
             }
 
-            renderUser();
+            renderUser(container);
+            renderUser(mobileContainer);
         } catch (err) {
-            renderError();
+            renderError(container);
+            renderError(mobileContainer);
         }
     }
 
     // ---------------------------------------------------------
-    // Logout — updates the menu immediately, no page reload
+    // Logout — updates the menus immediately, no page reload
     // ---------------------------------------------------------
 
     async function logout() {
@@ -163,9 +178,10 @@
     // ---------------------------------------------------------
 
     function init() {
-        if (!dropdown || !container) return;
+        if (!dropdown && !mobileDropdown) return;
 
-        if (button) {
+        // Desktop: click toggles the dropdown, hover opens it.
+        if (dropdown && button) {
             button.addEventListener("click", function (event) {
                 event.stopPropagation();
                 openedByHover = false;
@@ -177,28 +193,40 @@
                     refreshMenu();
                 }
             });
+
+            dropdown.addEventListener("mouseenter", function () {
+                if (isDesktop()) {
+                    openedByHover = true;
+                    openMenu();
+                    refreshMenu();
+                }
+            });
+
+            dropdown.addEventListener("mouseleave", function () {
+                if (openedByHover && isDesktop()) {
+                    closeMenu();
+                    openedByHover = false;
+                }
+            });
+
+            document.addEventListener("click", function (event) {
+                if (!dropdown.contains(event.target)) {
+                    closeMenu();
+                }
+            });
         }
 
-        dropdown.addEventListener("mouseenter", function () {
-            if (isDesktop()) {
-                openedByHover = true;
-                openMenu();
+        // Mobile: click toggles the accordion inside the drawer.
+        if (mobileDropdown && mobileButton) {
+            mobileButton.addEventListener("click", function (event) {
+                event.stopPropagation();
+
+                var isOpen = mobileDropdown.classList.contains("active");
+                mobileDropdown.classList.toggle("active", !isOpen);
+                mobileButton.setAttribute("aria-expanded", String(!isOpen));
                 refreshMenu();
-            }
-        });
-
-        dropdown.addEventListener("mouseleave", function () {
-            if (openedByHover && isDesktop()) {
-                closeMenu();
-                openedByHover = false;
-            }
-        });
-
-        document.addEventListener("click", function (event) {
-            if (!dropdown.contains(event.target)) {
-                closeMenu();
-            }
-        });
+            });
+        }
 
         if (supabase) {
             supabase.auth.onAuthStateChange(function (event) {

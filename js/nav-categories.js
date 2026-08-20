@@ -121,34 +121,49 @@
     // ---------------------------------------------------------
 
     async function init() {
-        var menu = document.getElementById("categoriesMenu");
-        var container = document.getElementById("categoriesMenuItems");
+        var desktopMenu = document.getElementById("categoriesMenu");
+        var desktopContainer = document.getElementById("categoriesMenuItems");
+        var mobileMenu = document.getElementById("mobileCategoriesMenu");
+        var mobileContainer = document.getElementById("mobileCategoriesMenuItems");
 
-        if (!menu || !container) return;
+        if (!desktopContainer || !mobileContainer) return;
 
-        // Close the dropdown when a dynamic link is clicked.
-        var dropdown = document.getElementById("categoriesDropdown");
-        if (dropdown) {
-            menu.addEventListener("click", function (event) {
+        // Close the desktop dropdown when a dynamic link is clicked.
+        var desktopDropdown = document.getElementById("categoriesDropdown");
+        if (desktopDropdown) {
+            desktopMenu.addEventListener("click", function (event) {
                 if (event.target.closest("a")) {
-                    dropdown.classList.remove("active");
+                    desktopDropdown.classList.remove("active");
+                }
+            });
+        }
+
+        // Close the mobile accordion when a dynamic link is clicked.
+        var mobileDropdown = document.getElementById("mobileCategoriesDropdown");
+        if (mobileDropdown) {
+            mobileMenu.addEventListener("click", function (event) {
+                if (event.target.closest("a")) {
+                    mobileDropdown.classList.remove("active");
                 }
             });
         }
 
         if (!supabase) {
-            renderError(container);
+            renderError(desktopContainer);
+            renderError(mobileContainer);
             return;
         }
 
-        renderLoading(container);
+        renderLoading(desktopContainer);
+        renderLoading(mobileContainer);
 
         try {
             var categories = await fetchCategories();
             var roots = buildTree(categories);
 
             if (roots.length === 0) {
-                renderEmpty(container);
+                renderEmpty(desktopContainer);
+                renderEmpty(mobileContainer);
                 return;
             }
 
@@ -157,9 +172,11 @@
                 html += renderNode(root, 0);
             });
 
-            container.innerHTML = html;
+            desktopContainer.innerHTML = html;
+            mobileContainer.innerHTML = html;
         } catch (err) {
-            renderError(container);
+            renderError(desktopContainer);
+            renderError(mobileContainer);
         }
     }
 

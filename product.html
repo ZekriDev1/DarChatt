@@ -21,7 +21,7 @@
          Navigation Bar
     ========================== -->
 
-    <nav class="navbar" dir="rtl">
+<nav class="navbar" dir="rtl">
 
         <div class="nav-container">
 
@@ -38,25 +38,8 @@
                 >
             </a>
 
-            <!-- Mobile Menu Button -->
-            <button
-                type="button"
-                class="mobile-menu-button"
-                id="mobileMenuButton"
-                aria-label="فتح القائمة"
-                aria-expanded="false"
-                aria-controls="navLinks"
-            >
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
-            <!-- Navigation Links -->
-            <div
-                class="nav-links"
-                id="navLinks"
-            >
+            <!-- Desktop Navigation Links (≥1024px) -->
+            <div class="nav-links" id="desktopNavLinks">
 
                 <!-- Home -->
                 <a
@@ -148,7 +131,7 @@
 
             </div>
 
-            <!-- Navigation Actions -->
+            <!-- Desktop Actions (≥1024px) -->
             <div class="nav-actions">
 
                 <!-- Search -->
@@ -240,7 +223,6 @@
                     class="nav-icon cart-icon"
                     aria-label="السلة"
                 >
-
                     <svg
                         viewBox="0 0 24 24"
                         fill="none"
@@ -273,14 +255,284 @@
                     <span class="cart-count">
                         0
                     </span>
+                </a>
 
+            </div>
+
+            <!-- Mobile Menu Button (<1024px) -->
+            <button
+                type="button"
+                class="mobile-menu-button"
+                id="mobileMenuButton"
+                aria-label="فتح القائمة"
+                aria-expanded="false"
+                aria-controls="mobileDrawer"
+            >
+                <svg
+                    class="mobile-menu-icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                >
+                    <line x1="4" y1="6" x2="20" y2="6"></line>
+                    <line x1="4" y1="12" x2="20" y2="12"></line>
+                    <line x1="4" y1="18" x2="20" y2="18"></line>
+                </svg>
+            </button>
+
+            <!-- Spacer to balance the mobile grid -->
+            <div class="nav-spacer" aria-hidden="true"></div>
+
+        </div>
+
+    </nav>
+
+    <!-- Mobile Drawer Overlay (body-level, <1024px only) -->
+    <div class="nav-menu-overlay" id="navMenuOverlay"></div>
+
+    <!-- Mobile Drawer (body-level, <1024px only) -->
+    <aside
+        class="mobile-drawer"
+        id="mobileDrawer"
+        aria-label="القائمة"
+    >
+
+        <div class="nav-drawer-header">
+
+            <button
+                type="button"
+                class="nav-drawer-close"
+                id="navDrawerClose"
+                aria-label="إغلاق القائمة"
+            >✕</button>
+
+        </div>
+
+        <!-- Search -->
+        <a
+            href="javascript:void(0)"
+            class="nav-drawer-item search-icon"
+            aria-label="البحث"
+        >
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+            >
+                <circle
+                    cx="11"
+                    cy="11"
+                    r="6.5"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                />
+
+                <path
+                    d="M16 16L21 21"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                />
+            </svg>
+
+            <span>البحث</span>
+        </a>
+
+        <div class="nav-drawer-divider"></div>
+
+        <!-- Home -->
+        <a
+            href="index.html"
+            class="nav-drawer-item nav-link"
+        >
+            الرئيسية
+        </a>
+
+        <!-- Categories Dropdown (mobile accordion) -->
+        <div
+            class="dropdown"
+            id="mobileCategoriesDropdown"
+        >
+
+            <button
+                type="button"
+                class="nav-drawer-item nav-link dropdown-trigger"
+                id="mobileCategoriesButton"
+                aria-expanded="false"
+                aria-controls="mobileCategoriesMenu"
+            >
+                <span>التصنيفات</span>
+
+                <svg
+                    class="dropdown-arrow"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                >
+                    <path
+                        d="M6 9L12 15L18 9"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+                </svg>
+            </button>
+
+            <div
+                class="dropdown-menu"
+                id="mobileCategoriesMenu"
+            >
+
+                <div id="mobileCategoriesMenuItems">
+
+                    <div class="dropdown-state-item">
+                        جاري تحميل التصنيفات...
+                    </div>
+
+                </div>
+
+                <div class="dropdown-divider"></div>
+
+                <a
+                    href="shop.html"
+                    class="view-all-categories"
+                >
+                    عرض جميع المنتجات
+
+                    <span aria-hidden="true">
+                        ←
+                    </span>
                 </a>
 
             </div>
 
         </div>
 
-    </nav>
+        <!-- Shop -->
+        <a
+            href="shop.html"
+            class="nav-drawer-item nav-link"
+        >
+            المتجر
+        </a>
+
+        <!-- About -->
+        <a
+            href="#about"
+            class="nav-drawer-item nav-link"
+        >
+            من نحن
+        </a>
+
+        <div class="nav-drawer-divider"></div>
+
+        <!-- Account Dropdown (mobile accordion) -->
+        <div
+            class="dropdown account-dropdown"
+            id="mobileAccountDropdown"
+        >
+
+            <button
+                type="button"
+                class="nav-drawer-item account-trigger"
+                id="mobileAccountButton"
+                aria-expanded="false"
+                aria-controls="mobileAccountMenu"
+            >
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                >
+                    <circle
+                        cx="12"
+                        cy="8"
+                        r="3.5"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                    />
+
+                    <path
+                        d="M5.5 21C5.5 17.5 8.4 15 12 15C15.6 15 18.5 17.5 18.5 21"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                    />
+                </svg>
+
+                <span>الحساب</span>
+            </button>
+
+            <div
+                class="dropdown-menu account-menu"
+                id="mobileAccountMenu"
+            >
+
+                <div id="mobileAccountMenuItems">
+
+                    <div class="dropdown-state-item">
+                        جاري التحميل...
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Cart -->
+        <a
+            href="javascript:void(0)"
+            class="nav-drawer-item cart-icon"
+            aria-label="السلة"
+        >
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+            >
+                <path
+                    d="M3 4H5L7.2 15.5H18.5L21 7H7"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                />
+
+                <circle
+                    cx="9"
+                    cy="20"
+                    r="1"
+                    fill="currentColor"
+                />
+
+                <circle
+                    cx="18"
+                    cy="20"
+                    r="1"
+                    fill="currentColor"
+                />
+            </svg>
+
+            <span>سلة التسوق</span>
+
+            <span class="cart-count">
+                0
+            </span>
+        </a>
+
+    </aside>
 
 
     <!-- =========================
@@ -416,6 +668,11 @@
                 <div class="footer-col footer-about">
                     <p class="footer-brand">دار الشاط</p>
                     <p class="footer-desc">تشكيلة فاخرة من العطور والإكسسوارات واللوازم الإسلامية.</p>
+
+                    <ul class="footer-contact">
+                        <li><a href="tel:0631484377" dir="ltr">0631-484377</a></li>
+                        <li><a href="mailto:contact@darchatt.com" dir="ltr">contact@darchatt.com</a></li>
+                    </ul>
                 </div>
 
                 <div class="footer-col">

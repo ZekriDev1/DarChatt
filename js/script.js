@@ -3,7 +3,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const button = document.getElementById("categoriesButton");
     const menu = document.getElementById("categoriesMenu");
     const mobileMenuButton = document.getElementById("mobileMenuButton");
-    const navLinks = document.getElementById("navLinks");
+    const mobileDrawer = document.getElementById("mobileDrawer");
+    const navMenuOverlay = document.getElementById("navMenuOverlay");
+    const navDrawerClose = document.getElementById("navDrawerClose");
+    const mobileCategoriesDropdown = document.getElementById("mobileCategoriesDropdown");
+    const mobileCategoriesButton = document.getElementById("mobileCategoriesButton");
 
     // Logo from admin settings (site.logo_url), fallback to local file
     const supabase = window.DarChattSupabase;
@@ -28,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let openedByHover = false;
 
         const isDesktop = () =>
-            window.innerWidth > 900 &&
+            window.innerWidth >= 1024 &&
             window.matchMedia("(hover: hover)").matches;
 
         const openDropdown = () => {
@@ -81,14 +85,63 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    if (mobileMenuButton && navLinks) {
-        mobileMenuButton.addEventListener("click", () => {
-            const isOpen = navLinks.classList.toggle("mobile-open");
+    if (mobileMenuButton && mobileDrawer && navMenuOverlay) {
+        const closeMobileMenu = () => {
+            mobileDrawer.classList.remove("is-open");
+            navMenuOverlay.classList.remove("is-open");
+            document.body.classList.remove("nav-menu-open");
+            mobileMenuButton.classList.remove("active");
+            mobileMenuButton.setAttribute("aria-expanded", "false");
+        };
 
-            mobileMenuButton.setAttribute(
-                "aria-expanded",
-                isOpen ? "true" : "false"
-            );
+        const openMobileMenu = () => {
+            mobileDrawer.classList.add("is-open");
+            navMenuOverlay.classList.add("is-open");
+            document.body.classList.add("nav-menu-open");
+            mobileMenuButton.classList.add("active");
+            mobileMenuButton.setAttribute("aria-expanded", "true");
+        };
+
+        mobileMenuButton.addEventListener("click", () => {
+            const isOpen = mobileDrawer.classList.contains("is-open");
+            if (isOpen) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
+            }
+        });
+
+        if (navDrawerClose) {
+            navDrawerClose.addEventListener("click", () => {
+                closeMobileMenu();
+            });
+        }
+
+        navMenuOverlay.addEventListener("click", () => {
+            closeMobileMenu();
+        });
+
+        mobileDrawer.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", () => {
+                closeMobileMenu();
+            });
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                closeMobileMenu();
+            }
+        });
+    }
+
+    // Mobile categories accordion (<1024px)
+    if (mobileCategoriesButton && mobileCategoriesDropdown) {
+        mobileCategoriesButton.addEventListener("click", (event) => {
+            event.stopPropagation();
+
+            const isOpen = mobileCategoriesDropdown.classList.contains("active");
+            mobileCategoriesDropdown.classList.toggle("active", !isOpen);
+            mobileCategoriesButton.setAttribute("aria-expanded", String(!isOpen));
         });
     }
 });
