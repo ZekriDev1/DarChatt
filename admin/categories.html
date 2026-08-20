@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة التصنيفات — دار شاط</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+    <div class="admin-loading" id="adminLoading">
+        <div class="admin-loading-spinner"></div>
+        <div class="admin-loading-text">جاري التحقق من الصلاحيات...</div>
+    </div>
+
+    <div class="admin-layout" id="adminLayout" hidden>
+
+        <aside class="admin-sidebar" id="adminSidebar"></aside>
+
+        <div class="admin-main">
+
+            <header class="admin-topbar" id="adminTopbar"></header>
+
+            <main class="admin-content">
+
+                <div class="admin-card">
+                    <div class="admin-card-header">
+                        <h2 class="admin-card-title">إدارة التصنيفات</h2>
+                        <a class="admin-btn admin-btn-primary" href="/admin/category-create.html">
+                            إضافة تصنيف جديد
+                        </a>
+                    </div>
+
+                    <div class="admin-toolbar">
+                        <input
+                            type="text"
+                            class="admin-input"
+                            id="categorySearch"
+                            placeholder="بحث بالاسم أو الرابط المختصر..."
+                            autocomplete="off"
+                        >
+                        <select class="admin-select" id="statusFilter">
+                            <option value="all">الحالة: الكل</option>
+                            <option value="active">نشط</option>
+                            <option value="inactive">غير نشط</option>
+                        </select>
+                    </div>
+
+                    <div class="admin-table-wrap">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>اسم التصنيف</th>
+                                    <th>Slug</th>
+                                    <th>عدد المنتجات</th>
+                                    <th>الحالة</th>
+                                    <th>ترتيب العرض</th>
+                                    <th>تاريخ الإنشاء</th>
+                                    <th>الإجراءات</th>
+                                </tr>
+                            </thead>
+                            <tbody id="categoriesTableBody">
+                                <tr>
+                                    <td colspan="8" class="cell-muted">جاري تحميل التصنيفات...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="admin-pagination" id="categoriesPagination" hidden>
+                        <span class="admin-pagination-info" id="categoriesCount"></span>
+                        <span class="admin-pagination-buttons" id="categoriesPages"></span>
+                    </div>
+
+                    <div class="admin-empty" id="categoriesEmpty" hidden>
+                        <div class="admin-empty-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 7C3 5.9 3.9 5 5 5H9L11 7H19C20.1 7 21 7.9 21 9V17C21 18.1 20.1 19 19 19H5C3.9 19 3 18.1 3 17V7Z"/>
+                            </svg>
+                        </div>
+                        <h2 id="categoriesEmptyTitle">لا توجد تصنيفات</h2>
+                        <p id="categoriesEmptyText">اضغط على "إضافة تصنيف جديد" لإنشاء أول تصنيف.</p>
+                        <button type="button" class="admin-btn" id="retryCategoriesButton" hidden>
+                            إعادة المحاولة
+                        </button>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <div class="admin-toast" id="adminToast" hidden></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/supabase-config.js"></script>
+    <script src="../js/supabase.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/layout.js"></script>
+    <script src="js/shared.js"></script>
+    <script src="js/pages/categories.js"></script>
+
+</body>
+</html>

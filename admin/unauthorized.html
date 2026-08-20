@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>غير مصرح — دار شاط</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+    <div class="admin-denied">
+        <div class="admin-denied-card">
+            <div class="admin-denied-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 9V13"/>
+                    <path d="M12 16.5V16.6"/>
+                    <path d="M10.3 3.8L2.5 17.2C2 18.1 2.6 19.2 3.7 19.2H20.3C21.4 19.2 22 18.1 21.5 17.2L13.7 3.8C13.2 2.9 10.8 2.9 10.3 3.8Z"/>
+                </svg>
+            </div>
+            <h1>غير مصرح بالدخول</h1>
+            <p>هذه المنطقة مخصصة لإداريي دار شاط فقط. حسابك الحالي لا يملك صلاحيات إدارية.</p>
+            <div class="admin-denied-actions">
+                <button type="button" class="admin-btn admin-btn-danger" id="unauthorizedLogoutButton">تسجيل الخروج</button>
+                <a href="/" class="admin-btn">العودة إلى المتجر</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/supabase-config.js"></script>
+    <script src="../js/supabase.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        (function () {
+            var button = document.getElementById("unauthorizedLogoutButton");
+            if (button) {
+                button.addEventListener("click", function () {
+                    window.AdminAuth.logout();
+                });
+            }
+        })();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محرر الموقع — دار شاط</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+    <div class="admin-loading" id="adminLoading">
+        <div class="admin-loading-spinner"></div>
+        <div class="admin-loading-text">جاري التحقق من الصلاحيات...</div>
+    </div>
+
+    <div class="admin-layout" id="adminLayout" hidden>
+
+        <aside class="admin-sidebar" id="adminSidebar"></aside>
+
+        <div class="admin-main">
+
+            <header class="admin-topbar" id="adminTopbar"></header>
+
+            <main class="admin-content">
+
+                <div class="admin-card form-card settings-card">
+                    <div class="admin-card-header">
+                        <h2 class="admin-card-title">محرر الموقع</h2>
+                        <p class="admin-card-subtitle">التحكم في واجهة الصفحة الرئيسية.</p>
+                    </div>
+
+                    <div class="admin-card-body">
+                        <form id="websiteEditorForm" novalidate>
+
+                            <!-- ================= Hero ================= -->
+
+                            <div class="form-section">
+                                <h3 class="form-section-title">القسم الرئيسي (Hero)</h3>
+
+                                <div class="admin-form-grid">
+                                    <div class="admin-field admin-field-full">
+                                        <label for="heroHeading">العنوان الرئيسي</label>
+                                        <input type="text" id="heroHeading" class="admin-input" placeholder="أهلاً بكم في دار شاط
+">
+                                    </div>
+                                    <div class="admin-field admin-field-full">
+                                        <label for="heroSubheading">العنوان الفرعي</label>
+                                        <input type="text" id="heroSubheading" class="admin-input" placeholder="تشكيلة فاخرة من العطور والإكسسوارات">
+                                    </div>
+                                </div>
+
+                                <div class="admin-field admin-field-full">
+                                    <label>صور القسم الرئيسي</label>
+                                    <p class="admin-field-hint" style="margin-bottom:12px">
+                                        تُعرض الصور كشريط متحرك (سلايدر) في أعلى الصفحة الرئيسية. أضف صورة واحدة على الأقل — رتبها بالسحب أو بالأزرار، الأولى هي صورة البداية.
+                                    </p>
+
+                                    <div class="hero-image-grid" id="heroImagesGrid">
+                                        <div class="hero-image-empty" id="heroImagesEmpty">
+                                            لا توجد صور بعد — أضف صوراً من الزر أدناه.
+                                        </div>
+                                    </div>
+
+                                    <div class="admin-image-actions">
+                                        <label class="admin-btn admin-image-button">
+                                            إضافة صور
+                                            <input type="file" id="heroImagesInput" accept="image/*" multiple hidden>
+                                        </label>
+                                        <p class="admin-field-hint">صيغ JPG / PNG / WebP — الحجم الأقصى 2MB لكل صورة.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="admin-btn admin-btn-primary" id="websiteEditorSubmitButton">
+                                    <span id="websiteEditorSubmitLabel">حفظ التغييرات</span>
+                                </button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <div class="admin-toast" id="adminToast" hidden></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/supabase-config.js"></script>
+    <script src="../js/supabase.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/layout.js"></script>
+    <script src="js/shared.js"></script>
+    <script src="js/pages/website-editor.js"></script>
+
+</body>
+</html>

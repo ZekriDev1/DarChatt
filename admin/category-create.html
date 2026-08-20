@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إضافة تصنيف — دار شاط</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+    <div class="admin-loading" id="adminLoading">
+        <div class="admin-loading-spinner"></div>
+        <div class="admin-loading-text">جاري التحقق من الصلاحيات...</div>
+    </div>
+
+    <div class="admin-layout" id="adminLayout" hidden>
+
+        <aside class="admin-sidebar" id="adminSidebar"></aside>
+
+        <div class="admin-main">
+
+            <header class="admin-topbar" id="adminTopbar"></header>
+
+            <main class="admin-content">
+
+                <div class="admin-card form-card">
+                    <div class="admin-card-header">
+                        <h2 class="admin-card-title">إضافة تصنيف جديد</h2>
+                        <a class="admin-btn" href="/admin/categories.html">العودة للتصنيفات</a>
+                    </div>
+
+                    <div class="admin-card-body">
+                        <form id="categoryForm" novalidate>
+
+                            <div class="admin-form-grid">
+
+                                <div class="admin-field">
+                                    <label for="categoryName">اسم التصنيف بالعربية <span class="required-mark">*</span></label>
+                                    <input type="text" id="categoryName" class="admin-input" required placeholder="مثال: العطور">
+                                </div>
+
+                                <div class="admin-field">
+                                    <label for="categoryNameEn">الاسم بالإنجليزية</label>
+                                    <input type="text" id="categoryNameEn" class="admin-input is-ltr" dir="ltr" placeholder="Perfumes">
+                                </div>
+
+                                <div class="admin-field">
+                                    <label for="categorySlug">Slug <span class="required-mark">*</span></label>
+                                    <input type="text" id="categorySlug" class="admin-input is-ltr" dir="ltr" required placeholder="perfumes">
+                                    <p class="admin-field-hint">يُولّد تلقائياً من الاسم ويمكن تعديله يدوياً. يجب أن يكون فريداً.</p>
+                                </div>
+
+                                <div class="admin-field">
+                                    <label for="categorySortOrder">ترتيب العرض</label>
+                                    <input type="number" id="categorySortOrder" class="admin-input" min="0" step="1" value="0">
+                                    <p class="admin-field-hint">الترتيب تصاعدي — الأصغر يظهر أولاً.</p>
+                                </div>
+
+                                <div class="admin-field admin-field-full">
+                                    <label for="categoryDescription">الوصف</label>
+                                    <textarea id="categoryDescription" class="admin-input" rows="3" placeholder="وصف اختياري للتصنيف..."></textarea>
+                                </div>
+
+                                <div class="admin-field">
+                                    <label>صورة التصنيف</label>
+                                    <div class="admin-image-upload">
+                                        <img id="categoryImagePreview" class="gallery-main-preview" alt="معاينة الصورة" hidden>
+                                        <div class="admin-image-actions">
+                                            <label class="admin-btn admin-image-button">
+                                                اختيار صورة
+                                                <input type="file" id="categoryImageInput" accept="image/*" hidden>
+                                            </label>
+                                            <button type="button" class="admin-btn admin-btn-danger" id="removeCategoryImageButton" hidden>
+                                                إزالة الصورة
+                                            </button>
+                                        </div>
+                                        <div class="upload-progress" id="categoryUploadProgress">
+                                            <div class="progress-track">
+                                                <div class="progress-fill" id="categoryUploadFill"></div>
+                                            </div>
+                                            <p class="upload-progress-text" id="categoryUploadText"></p>
+                                        </div>
+                                        <p class="admin-field-hint">صيغ JPG / PNG / WebP — الحجم الأقصى 2MB.</p>
+                                    </div>
+                                </div>
+
+                                <div class="admin-field">
+                                    <label for="categoryStatus">الحالة</label>
+                                    <select id="categoryStatus" class="admin-select">
+                                        <option value="true">نشط</option>
+                                        <option value="false">غير نشط</option>
+                                    </select>
+                                </div>
+
+                            </div>
+
+                            <div class="form-actions">
+                                <a class="admin-btn" href="/admin/categories.html">إلغاء</a>
+                                <button type="submit" class="admin-btn admin-btn-primary" id="categorySubmitButton">
+                                    <span id="categorySubmitLabel">حفظ التصنيف</span>
+                                </button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <div class="admin-toast" id="adminToast" hidden></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/supabase-config.js"></script>
+    <script src="../js/supabase.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/layout.js"></script>
+    <script src="js/shared.js"></script>
+    <script src="js/pages/category-form.js"></script>
+
+</body>
+</html>

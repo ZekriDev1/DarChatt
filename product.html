@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>تفاصيل المنتج — دار شاط</title>
+
+    <meta
+        name="description"
+        content="تفاصيل المنتج"
+    >
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         Navigation Bar
+    ========================== -->
+
+    <nav class="navbar" dir="rtl">
+
+        <div class="nav-container">
+
+            <!-- Logo -->
+            <a
+                href="index.html"
+                class="logo-link"
+                aria-label="دار شاط - الصفحة الرئيسية"
+            >
+                <img
+                    src="assets/logo.png"
+                    alt="دار شاط"
+                    class="nav-logo"
+                >
+            </a>
+
+            <!-- Mobile Menu Button -->
+            <button
+                type="button"
+                class="mobile-menu-button"
+                id="mobileMenuButton"
+                aria-label="فتح القائمة"
+                aria-expanded="false"
+                aria-controls="navLinks"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Navigation Links -->
+            <div
+                class="nav-links"
+                id="navLinks"
+            >
+
+                <!-- Home -->
+                <a
+                    href="index.html"
+                    class="nav-link"
+                >
+                    الرئيسية
+                </a>
+
+                <!-- Categories Dropdown -->
+                <div
+                    class="dropdown"
+                    id="categoriesDropdown"
+                >
+
+                    <button
+                        type="button"
+                        class="nav-link dropdown-trigger"
+                        id="categoriesButton"
+                        aria-expanded="false"
+                        aria-controls="categoriesMenu"
+                    >
+                        التصنيفات
+
+                        <svg
+                            class="dropdown-arrow"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="M6 9L12 15L18 9"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                        </svg>
+                    </button>
+
+                    <div
+                        class="dropdown-menu"
+                        id="categoriesMenu"
+                    >
+
+                        <div id="categoriesMenuItems">
+
+                            <div class="dropdown-state-item">
+                                جاري تحميل التصنيفات...
+                            </div>
+
+                        </div>
+
+                        <div class="dropdown-divider"></div>
+
+                        <a
+                            href="shop.html"
+                            class="view-all-categories"
+                        >
+                            عرض جميع المنتجات
+
+                            <span aria-hidden="true">
+                                ←
+                            </span>
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <!-- Shop -->
+                <a
+                    href="shop.html"
+                    class="nav-link"
+                >
+                    المتجر
+                </a>
+
+                <!-- About -->
+                <a
+                    href="#about"
+                    class="nav-link"
+                >
+                    من نحن
+                </a>
+
+            </div>
+
+            <!-- Navigation Actions -->
+            <div class="nav-actions">
+
+                <!-- Search -->
+                <a
+                    href="javascript:void(0)"
+                    class="nav-icon"
+                    aria-label="البحث"
+                >
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                    >
+                        <circle
+                            cx="11"
+                            cy="11"
+                            r="6.5"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                        />
+
+                        <path
+                            d="M16 16L21 21"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            stroke-linecap="round"
+                        />
+                    </svg>
+                </a>
+
+                <!-- Account Dropdown -->
+                <div
+                    class="dropdown account-dropdown"
+                    id="accountDropdown"
+                >
+
+                    <button
+                        type="button"
+                        class="nav-icon account-trigger"
+                        id="accountButton"
+                        aria-label="الحساب"
+                        aria-expanded="false"
+                        aria-controls="accountMenu"
+                    >
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true"
+                        >
+                            <circle
+                                cx="12"
+                                cy="8"
+                                r="3.5"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                            />
+
+                            <path
+                                d="M5.5 21C5.5 17.5 8.4 15 12 15C15.6 15 18.5 17.5 18.5 21"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                            />
+                        </svg>
+                    </button>
+
+                    <div
+                        class="dropdown-menu account-menu"
+                        id="accountMenu"
+                    >
+
+                        <div id="accountMenuItems">
+
+                            <div class="dropdown-state-item">
+                                جاري التحميل...
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Cart -->
+                <a
+                    href="javascript:void(0)"
+                    class="nav-icon cart-icon"
+                    aria-label="السلة"
+                >
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                    >
+                        <path
+                            d="M3 4H5L7.2 15.5H18.5L21 7H7"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+
+                        <circle
+                            cx="9"
+                            cy="20"
+                            r="1"
+                            fill="currentColor"
+                        />
+
+                        <circle
+                            cx="18"
+                            cy="20"
+                            r="1"
+                            fill="currentColor"
+                        />
+                    </svg>
+
+                    <span class="cart-count">
+                        0
+                    </span>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================
+         Product Detail
+    ========================== -->
+
+    <main class="shop-page" dir="rtl">
+
+        <div class="shop-loading" id="productLoading">
+            <div class="shop-loading-spinner"></div>
+            <p>جاري تحميل المنتج...</p>
+        </div>
+
+        <div class="shop-error" id="productError" hidden>
+            <p>تعذر تحميل المنتج. قد يكون غير متاح حالياً.</p>
+            <a href="shop.html" class="filter-button">العودة إلى المتجر</a>
+        </div>
+
+        <div id="productContent" hidden>
+
+            <nav class="product-breadcrumb" aria-label="مسار التنقل">
+                <a href="index.html">الرئيسية</a>
+                <span aria-hidden="true">/</span>
+                <a href="shop.html">المتجر</a>
+                <span aria-hidden="true">/</span>
+                <span id="productBreadcrumbCategory"></span>
+            </nav>
+
+            <div class="product-detail">
+
+                <!-- Gallery -->
+                <div class="product-gallery" id="productGallery"></div>
+
+                <!-- Info + Order -->
+                <div class="product-detail-info">
+
+                    <div id="productBadges"></div>
+
+                    <h1 class="product-detail-title" id="productTitle"></h1>
+
+                    <div class="product-detail-price-row" id="productPriceRow"></div>
+
+                    <p class="product-detail-stock" id="productStock"></p>
+
+                    <div class="product-detail-description" id="productDescription"></div>
+
+                    <div class="product-order-box" id="productOrderBox">
+
+                        <h2 class="product-order-title">اطلب هذا المنتج</h2>
+
+                        <p class="product-order-note">
+                            الدفع عند الاستلام — الشحن عبر المدن المتاحة.
+                        </p>
+
+                        <div class="product-quantity-row">
+                            <label for="orderQuantity" class="product-order-label">الكمية</label>
+                            <div class="quantity-control">
+                                <button type="button" id="quantityMinus" aria-label="إنقاص الكمية">−</button>
+                                <input type="number" id="orderQuantity" value="1" min="1" max="99" inputmode="numeric">
+                                <button type="button" id="quantityPlus" aria-label="زيادة الكمية">+</button>
+                            </div>
+                        </div>
+
+                        <form id="orderForm" novalidate>
+
+                            <div class="product-order-field">
+                                <label for="orderName">الاسم الكامل <span class="required-mark">*</span></label>
+                                <input type="text" id="orderName" class="order-input" autocomplete="name" required>
+                            </div>
+
+                            <div class="product-order-field">
+                                <label for="orderPhone">رقم الهاتف <span class="required-mark">*</span></label>
+                                <input type="tel" id="orderPhone" class="order-input is-ltr" dir="ltr" autocomplete="tel" required>
+                            </div>
+
+                            <div class="product-order-field">
+                                <label for="orderEmail">البريد الإلكتروني (اختياري)</label>
+                                <input type="email" id="orderEmail" class="order-input is-ltr" dir="ltr" autocomplete="email">
+                            </div>
+
+                            <div class="product-order-field">
+                                <label for="orderCity">المدينة <span class="required-mark">*</span></label>
+                                <input type="text" id="orderCity" class="order-input" autocomplete="address-level2" required>
+                            </div>
+
+                            <div class="product-order-field">
+                                <label for="orderAddress">العنوان <span class="required-mark">*</span></label>
+                                <textarea id="orderAddress" class="order-input" rows="2" autocomplete="street-address" required></textarea>
+                            </div>
+
+                            <div class="product-order-field">
+                                <label for="orderNotes">ملاحظات (اختياري)</label>
+                                <textarea id="orderNotes" class="order-input" rows="2"></textarea>
+                            </div>
+
+                            <button type="submit" class="order-submit" id="orderSubmitButton">
+                                <span id="orderSubmitLabel">تأكيد الطلب</span>
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                    <div class="order-success" id="orderSuccess" hidden>
+                        <h2>تم استلام طلبك بنجاح</h2>
+                        <p>رقم الطلب: <strong id="orderSuccessNumber"></strong></p>
+                        <p id="orderSuccessTotal"></p>
+                        <p class="order-success-note">
+                            سيتواصل معك فريقنا لتأكيد الطلب والشحن. الدفع عند الاستلام.
+                        </p>
+                        <a href="shop.html" class="filter-button">متابعة التسوق</a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+         Footer
+    ========================== -->
+
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <div class="footer-grid">
+
+                <div class="footer-col footer-about">
+                    <p class="footer-brand">دار شاط</p>
+                    <p class="footer-desc">تشكيلة فاخرة من العطور والإكسسوارات واللوازم الإسلامية.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-title">روابط سريعة</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="shop.html">المتجر</a></li>
+                        <li><a href="index.html#home-categories">التصنيفات</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-title">تابعنا</h4>
+                    <div class="footer-socials">
+                        <a class="footer-social" id="footerInstagram" href="#" target="_blank" rel="noopener" hidden>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5"/>
+                                <circle cx="12" cy="12" r="4"/>
+                                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+                            </svg>
+                            <span>إنستغرام</span>
+                        </a>
+                        <a class="footer-social" id="footerFacebook" href="#" target="_blank" rel="noopener" hidden>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                            </svg>
+                            <span>فيسبوك</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-col footer-map-col">
+                    <h4 class="footer-title">موقعنا</h4>
+                    <iframe
+                        class="footer-map"
+                        id="footerMap"
+                        src=""
+                        title="خريطة موقع دار شاط"
+                        loading="lazy"
+                        allowfullscreen
+                        referrerpolicy="no-referrer-when-downgrade"
+                        hidden
+                    ></iframe>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <p>© 2026 دار شاط. جميع الحقوق محفوظة.</p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         JavaScript
+    ========================== -->
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- Supabase Configuration -->
+    <script src="js/supabase-config.js"></script>
+
+    <!-- Supabase Functions -->
+    <script src="js/supabase.js"></script>
+
+    <!-- Categories -->
+    <script src="js/nav-categories.js"></script>
+
+    <!-- Account -->
+    <script src="js/account-menu.js"></script>
+
+    <!-- Main Script -->
+    <script src="js/script.js"></script>
+
+    <!-- Footer -->
+    <script src="js/footer.js"></script>
+
+    <!-- Product Detail -->
+    <script src="js/product.js"></script>
+
+</body>
+
+</html>

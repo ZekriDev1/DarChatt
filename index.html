@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>دار شاط</title>
+
+    <meta
+        name="description"
+        content="دار شاط - متجر إلكتروني"
+    >
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         Navigation Bar
+    ========================== -->
+
+    <nav class="navbar" dir="rtl">
+
+        <div class="nav-container">
+
+            <!-- Logo -->
+            <a
+                href="index.html"
+                class="logo-link"
+                aria-label="دار شاط - الصفحة الرئيسية"
+            >
+                <img
+                    src="assets/logo.png"
+                    alt="دار شاط"
+                    class="nav-logo"
+                >
+            </a>
+
+            <!-- Mobile Menu Button -->
+            <button
+                type="button"
+                class="mobile-menu-button"
+                id="mobileMenuButton"
+                aria-label="فتح القائمة"
+                aria-expanded="false"
+                aria-controls="navLinks"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Navigation Links -->
+            <div
+                class="nav-links"
+                id="navLinks"
+            >
+
+                <!-- Home -->
+                <a
+                    href="index.html"
+                    class="nav-link"
+                >
+                    الرئيسية
+                </a>
+
+                <!-- Categories Dropdown -->
+                <div
+                    class="dropdown"
+                    id="categoriesDropdown"
+                >
+
+                    <button
+                        type="button"
+                        class="nav-link dropdown-trigger"
+                        id="categoriesButton"
+                        aria-expanded="false"
+                        aria-controls="categoriesMenu"
+                    >
+                        التصنيفات
+
+                        <svg
+                            class="dropdown-arrow"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="M6 9L12 15L18 9"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                        </svg>
+                    </button>
+
+                    <div
+                        class="dropdown-menu"
+                        id="categoriesMenu"
+                    >
+
+                        <div id="categoriesMenuItems">
+
+                            <div class="dropdown-state-item">
+                                جاري تحميل التصنيفات...
+                            </div>
+
+                        </div>
+
+                        <div class="dropdown-divider"></div>
+
+                        <a
+                            href="shop.html"
+                            class="view-all-categories"
+                        >
+                            عرض جميع المنتجات
+
+                            <span aria-hidden="true">
+                                ←
+                            </span>
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <!-- Shop -->
+                <a
+                    href="shop.html"
+                    class="nav-link"
+                >
+                    المتجر
+                </a>
+
+                <!-- About -->
+                <a
+                    href="#about"
+                    class="nav-link"
+                >
+                    من نحن
+                </a>
+
+            </div>
+
+            <!-- Navigation Actions -->
+            <div class="nav-actions">
+
+                <!-- Search -->
+                <a
+                    href="javascript:void(0)"
+                    class="nav-icon"
+                    aria-label="البحث"
+                >
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                    >
+                        <circle
+                            cx="11"
+                            cy="11"
+                            r="6.5"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                        />
+
+                        <path
+                            d="M16 16L21 21"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            stroke-linecap="round"
+                        />
+                    </svg>
+                </a>
+
+                <!-- Account Dropdown -->
+                <div
+                    class="dropdown account-dropdown"
+                    id="accountDropdown"
+                >
+
+                    <button
+                        type="button"
+                        class="nav-icon account-trigger"
+                        id="accountButton"
+                        aria-label="الحساب"
+                        aria-expanded="false"
+                        aria-controls="accountMenu"
+                    >
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true"
+                        >
+                            <circle
+                                cx="12"
+                                cy="8"
+                                r="3.5"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                            />
+
+                            <path
+                                d="M5.5 21C5.5 17.5 8.4 15 12 15C15.6 15 18.5 17.5 18.5 21"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                            />
+                        </svg>
+                    </button>
+
+                    <div
+                        class="dropdown-menu account-menu"
+                        id="accountMenu"
+                    >
+
+                        <div id="accountMenuItems">
+
+                            <div class="dropdown-state-item">
+                                جاري التحميل...
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Cart -->
+                <a
+                    href="javascript:void(0)"
+                    class="nav-icon cart-icon"
+                    aria-label="السلة"
+                >
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                    >
+                        <path
+                            d="M3 4H5L7.2 15.5H18.5L21 7H7"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+
+                        <circle
+                            cx="9"
+                            cy="20"
+                            r="1"
+                            fill="currentColor"
+                        />
+
+                        <circle
+                            cx="18"
+                            cy="20"
+                            r="1"
+                            fill="currentColor"
+                        />
+                    </svg>
+
+                    <span class="cart-count">
+                        0
+                    </span>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================
+         Main Content
+    ========================== -->
+
+    <main>
+
+        <!-- Hero Section -->
+        <section
+            id="home"
+            class="hero"
+        >
+            <div class="hero-slider" id="heroSlider" hidden>
+                <div class="hero-slides" id="heroSlides"></div>
+                <button
+                    type="button"
+                    class="hero-arrow hero-arrow-prev"
+                    id="heroPrev"
+                    aria-label="السابق"
+                    hidden
+                >‹</button>
+                <button
+                    type="button"
+                    class="hero-arrow hero-arrow-next"
+                    id="heroNext"
+                    aria-label="التالي"
+                    hidden
+                >›</button>
+                <div class="hero-dots" id="heroDots" hidden></div>
+            </div>
+
+            <div class="hero-placeholder" id="heroPlaceholder" hidden>
+                <div class="hero-placeholder-inner">
+                    <p class="hero-eyebrow">دار شاط</p>
+                    <h1 class="hero-title">أهلاً بكم في دار شاط</h1>
+                    <p class="hero-subtitle">تشكيلة فاخرة من العطور والإكسسوارات</p>
+                    <a href="shop.html" class="hero-cta">تسوق الآن</a>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Categories Section -->
+        <section
+            id="home-categories"
+            class="home-categories"
+        >
+            <div class="home-categories-inner">
+
+                <p class="section-eyebrow">تسوق حسب التصنيف</p>
+                <h2 class="section-title">تصنيفاتنا</h2>
+                <p class="section-subtitle">اختر التصنيف الذي يناسبك واستكشف منتجاتنا</p>
+
+                <div class="home-categories-loading" id="homeCategoriesLoading">
+                    <div class="shop-loading-spinner"></div>
+                    <p>جاري تحميل التصنيفات...</p>
+                </div>
+
+                <div class="home-categories-error" id="homeCategoriesError" hidden>
+                    <p>تعذر تحميل التصنيفات حالياً.</p>
+                    <button type="button" class="filter-button" id="homeCategoriesRetry">إعادة المحاولة</button>
+                </div>
+
+                <div class="home-categories-grid" id="homeCategoriesGrid"></div>
+
+                <div class="home-categories-empty" id="homeCategoriesEmpty" hidden>
+                    <p>لا توجد تصنيفات بعد — ترقبوا الجديد!</p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Products Section -->
+        <section
+            id="home-products"
+            class="home-products"
+        >
+            <div class="home-products-inner">
+
+                <p class="section-eyebrow">تشكيلة مختارة</p>
+                <h2 class="section-title">منتجاتنا</h2>
+                <p class="section-subtitle">أحدث منتجاتنا المميزة بانتظارك</p>
+
+                <div class="home-products-loading" id="homeProductsLoading">
+                    <div class="shop-loading-spinner"></div>
+                    <p>جاري تحميل المنتجات...</p>
+                </div>
+
+                <div class="home-products-error" id="homeProductsError" hidden>
+                    <p>تعذر تحميل المنتجات حالياً.</p>
+                    <button type="button" class="filter-button" id="homeProductsRetry">إعادة المحاولة</button>
+                </div>
+
+                <div class="home-products-grid" id="homeProductsGrid"></div>
+
+                <div class="home-products-empty" id="homeProductsEmpty" hidden>
+                    <p>لا توجد منتجات بعد — ترقبوا الجديد!</p>
+                </div>
+
+                <div class="home-products-footer">
+                    <a href="shop.html" class="home-products-more">عرض المزيد</a>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- About Section -->
+        <section
+            id="about"
+            class="about"
+        >
+            <!-- Your about content goes here -->
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         Footer
+    ========================== -->
+
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <div class="footer-grid">
+
+                <div class="footer-col footer-about">
+                    <p class="footer-brand">دار شاط</p>
+                    <p class="footer-desc">تشكيلة فاخرة من العطور والإكسسوارات واللوازم الإسلامية.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-title">روابط سريعة</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="shop.html">المتجر</a></li>
+                        <li><a href="index.html#home-categories">التصنيفات</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-title">تابعنا</h4>
+                    <div class="footer-socials">
+                        <a class="footer-social" id="footerInstagram" href="#" target="_blank" rel="noopener" hidden>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5"/>
+                                <circle cx="12" cy="12" r="4"/>
+                                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+                            </svg>
+                            <span>إنستغرام</span>
+                        </a>
+                        <a class="footer-social" id="footerFacebook" href="#" target="_blank" rel="noopener" hidden>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                            </svg>
+                            <span>فيسبوك</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-col footer-map-col">
+                    <h4 class="footer-title">موقعنا</h4>
+                    <iframe
+                        class="footer-map"
+                        id="footerMap"
+                        src=""
+                        title="خريطة موقع دار شاط"
+                        loading="lazy"
+                        allowfullscreen
+                        referrerpolicy="no-referrer-when-downgrade"
+                        hidden
+                    ></iframe>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <p>© 2026 دار شاط. جميع الحقوق محفوظة.</p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         JavaScript
+    ========================== -->
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- Supabase Configuration -->
+    <script src="js/supabase-config.js"></script>
+
+    <!-- Supabase Functions -->
+    <script src="js/supabase.js"></script>
+
+    <!-- Categories -->
+    <script src="js/nav-categories.js"></script>
+
+    <!-- Account -->
+    <script src="js/account-menu.js"></script>
+
+    <!-- Hero -->
+    <script src="js/hero.js"></script>
+
+    <!-- Home Categories -->
+    <script src="js/home-categories.js"></script>
+
+    <!-- Home Products -->
+    <script src="js/home-products.js"></script>
+
+    <!-- Footer -->
+    <script src="js/footer.js"></script>
+
+    <!-- Main Script -->
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>

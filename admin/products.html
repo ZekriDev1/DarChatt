@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة المنتجات — دار شاط</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+    <div class="admin-loading" id="adminLoading">
+        <div class="admin-loading-spinner"></div>
+        <div class="admin-loading-text">جاري التحقق من الصلاحيات...</div>
+    </div>
+
+    <div class="admin-layout" id="adminLayout" hidden>
+
+        <aside class="admin-sidebar" id="adminSidebar"></aside>
+
+        <div class="admin-main">
+
+            <header class="admin-topbar" id="adminTopbar"></header>
+
+            <main class="admin-content">
+
+                <div class="admin-card">
+                    <div class="admin-card-header">
+                        <h2 class="admin-card-title">إدارة المنتجات</h2>
+                        <a class="admin-btn admin-btn-primary" href="/admin/product-create.html">
+                            إضافة منتج جديد
+                        </a>
+                    </div>
+
+                    <div class="admin-toolbar">
+                        <input
+                            type="text"
+                            class="admin-input"
+                            id="productSearch"
+                            placeholder="بحث بالاسم أو الرابط أو SKU..."
+                            autocomplete="off"
+                        >
+                        <select class="admin-select" id="categoryFilter">
+                            <option value="all">التصنيف: الكل</option>
+                        </select>
+                        <select class="admin-select" id="statusFilter">
+                            <option value="all">الحالة: الكل</option>
+                            <option value="active">نشط</option>
+                            <option value="inactive">غير نشط</option>
+                        </select>
+                        <select class="admin-select" id="stockFilter">
+                            <option value="all">المخزون: الكل</option>
+                            <option value="in_stock">متوفر</option>
+                            <option value="low_stock">منخفض</option>
+                            <option value="out_of_stock">نفد</option>
+                        </select>
+                        <select class="admin-select" id="sortSelect">
+                            <option value="newest">الأحدث أولاً</option>
+                            <option value="oldest">الأقدم أولاً</option>
+                            <option value="price_high">السعر: الأعلى</option>
+                            <option value="price_low">السعر: الأدنى</option>
+                        </select>
+                    </div>
+
+                    <div class="admin-table-wrap">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>الصورة</th>
+                                    <th>اسم المنتج</th>
+                                    <th>التصنيف</th>
+                                    <th>السعر</th>
+                                    <th>المخزون</th>
+                                    <th>الحالة</th>
+                                    <th>تاريخ الإضافة</th>
+                                    <th>الإجراءات</th>
+                                </tr>
+                            </thead>
+                            <tbody id="productsTableBody">
+                                <tr>
+                                    <td colspan="8" class="cell-muted">جاري تحميل المنتجات...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="admin-pagination" id="productsPagination" hidden>
+                        <span class="admin-pagination-info" id="productsCount"></span>
+                        <span class="admin-pagination-buttons" id="productsPages"></span>
+                    </div>
+
+                    <div class="admin-empty" id="productsEmpty" hidden>
+                        <div class="admin-empty-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 8L12 3L3 8V16L12 21L21 16V8Z"/>
+                                <path d="M3 8L12 13L21 8"/>
+                                <path d="M12 13V21"/>
+                            </svg>
+                        </div>
+                        <h2 id="productsEmptyTitle">لا توجد منتجات</h2>
+                        <p id="productsEmptyText">اضغط على "إضافة منتج جديد" لإنشاء أول منتج.</p>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <div class="admin-toast" id="adminToast" hidden></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/supabase-config.js"></script>
+    <script src="../js/supabase.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/layout.js"></script>
+    <script src="js/shared.js"></script>
+    <script src="js/pages/products.js"></script>
+
+</body>
+</html>

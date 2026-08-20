@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إعدادات الموقع — دار شاط</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+    <div class="admin-loading" id="adminLoading">
+        <div class="admin-loading-spinner"></div>
+        <div class="admin-loading-text">جاري التحقق من الصلاحيات...</div>
+    </div>
+
+    <div class="admin-layout" id="adminLayout" hidden>
+
+        <aside class="admin-sidebar" id="adminSidebar"></aside>
+
+        <div class="admin-main">
+
+            <header class="admin-topbar" id="adminTopbar"></header>
+
+            <main class="admin-content">
+
+                <div class="admin-card form-card settings-card">
+                    <div class="admin-card-header">
+                        <h2 class="admin-card-title">إعدادات الموقع</h2>
+                    </div>
+
+                    <div class="admin-card-body">
+                        <form id="settingsForm" novalidate>
+
+                            <!-- ================= General ================= -->
+
+                            <div class="form-section">
+                                <h3 class="form-section-title">عام</h3>
+                                <div class="admin-form-grid">
+                                    <div class="admin-field">
+                                        <label for="settingStoreName">اسم المتجر</label>
+                                        <input type="text" id="settingStoreName" class="admin-input" placeholder="دار شاط">
+                                    </div>
+                                    <div class="admin-field">
+                                        <label for="settingStoreDescription">وصف المتجر</label>
+                                        <input type="text" id="settingStoreDescription" class="admin-input" placeholder="وصف مختصر للمتجر">
+                                    </div>
+                                    <div class="admin-field">
+                                        <label>الشعار</label>
+                                        <div class="admin-image-upload">
+                                            <img id="settingLogoPreview" class="gallery-main-preview" alt="معاينة الشعار" hidden>
+                                            <div class="admin-image-actions">
+                                                <label class="admin-btn admin-image-button">
+                                                    اختيار شعار
+                                                    <input type="file" id="settingLogoInput" accept="image/*" hidden>
+                                                </label>
+                                                <button type="button" class="admin-btn admin-btn-danger" id="settingLogoRemove" hidden>إزالة</button>
+                                            </div>
+                                            <p class="admin-field-hint">صيغ JPG / PNG / WebP — الحجم الأقصى 2MB.</p>
+                                        </div>
+                                    </div>
+                                    <div class="admin-field">
+                                        <label>Favicon</label>
+                                        <div class="admin-image-upload">
+                                            <img id="settingFaviconPreview" class="gallery-main-preview" alt="معاينة الأيقونة" hidden>
+                                            <div class="admin-image-actions">
+                                                <label class="admin-btn admin-image-button">
+                                                    اختيار أيقونة
+                                                    <input type="file" id="settingFaviconInput" accept="image/*" hidden>
+                                                </label>
+                                                <button type="button" class="admin-btn admin-btn-danger" id="settingFaviconRemove" hidden>إزالة</button>
+                                            </div>
+                                            <p class="admin-field-hint">صيغة مربعة صغيرة (مثل 32x32) — الحجم الأقصى 1MB.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ================= Contact ================= -->
+
+                            <div class="form-section">
+                                <h3 class="form-section-title">التواصل</h3>
+                                <div class="admin-form-grid">
+                                    <div class="admin-field">
+                                        <label for="settingPhone">رقم الهاتف</label>
+                                        <input type="text" id="settingPhone" class="admin-input is-ltr" dir="ltr" placeholder="+212 6 00 00 00 00">
+                                    </div>
+                                    <div class="admin-field">
+                                        <label for="settingWhatsapp">WhatsApp</label>
+                                        <input type="text" id="settingWhatsapp" class="admin-input is-ltr" dir="ltr" placeholder="+212600000000">
+                                    </div>
+                                    <div class="admin-field">
+                                        <label for="settingEmail">البريد الإلكتروني</label>
+                                        <input type="email" id="settingEmail" class="admin-input is-ltr" dir="ltr" placeholder="contact@darchatt.ma">
+                                    </div>
+                                    <div class="admin-field">
+                                        <label for="settingAddress">العنوان</label>
+                                        <input type="text" id="settingAddress" class="admin-input" placeholder="المدينة، المغرب">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ================= Shipping ================= -->
+
+                            <div class="form-section">
+                                <h3 class="form-section-title">الشحن</h3>
+                                <div class="admin-form-grid">
+                                    <div class="admin-field">
+                                        <label for="settingShippingFee">سعر الشحن (درهم)</label>
+                                        <input type="number" id="settingShippingFee" class="admin-input" min="0" step="0.01" placeholder="30">
+                                    </div>
+                                    <div class="admin-field">
+                                        <label for="settingFreeShippingThreshold">الشحن المجاني فوق مبلغ (درهم)</label>
+                                        <input type="number" id="settingFreeShippingThreshold" class="admin-input" min="0" step="0.01" placeholder="500">
+                                        <p class="admin-field-hint">اتركه فارغاً لتعطيل الشحن المجاني.</p>
+                                    </div>
+                                    <div class="admin-field admin-field-full">
+                                        <label for="settingCities">المدن المتاحة</label>
+                                        <textarea id="settingCities" class="admin-input" rows="4" placeholder="الدار البيضاء&#10;الرباط&#10;مراكش"></textarea>
+                                        <p class="admin-field-hint">مدينة واحدة في كل سطر.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ================= Store ================= -->
+
+                            <div class="form-section">
+                                <h3 class="form-section-title">المتجر</h3>
+                                <div class="admin-form-grid">
+                                    <div class="admin-field">
+                                        <label for="settingIsOpen">حالة المتجر</label>
+                                        <select id="settingIsOpen" class="admin-select">
+                                            <option value="true">مفتوح</option>
+                                            <option value="false">مغلق</option>
+                                        </select>
+                                    </div>
+                                    <div class="admin-field">
+                                        <label>العملة</label>
+                                        <div>
+                                            <span class="currency-chip">MAD — الدرهم المغربي</span>
+                                        </div>
+                                    </div>
+                                    <div class="admin-field admin-field-full">
+                                        <label for="settingCloseMessage">رسالة الإغلاق</label>
+                                        <textarea id="settingCloseMessage" class="admin-input" rows="2" placeholder="المتجر مغلق حالياً، سنعود قريباً!"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ================= Checkout ================= -->
+
+                            <div class="form-section">
+                                <h3 class="form-section-title">الدفع</h3>
+                                <div class="settings-note">
+                                    طريقة الدفع المعتمدة في دار شاط هي
+                                    <strong>الدفع عند الاستلام (COD)</strong> فقط — لا توجد بوابات دفع إلكتروني في هذا الإصدار.
+                                </div>
+                            </div>
+
+                            <!-- ================= Social ================= -->
+
+                            <div class="form-section">
+                                <h3 class="form-section-title">وسائل التواصل الاجتماعي</h3>
+                                <div class="admin-form-grid">
+                                    <div class="admin-field">
+                                        <label for="settingFacebook">Facebook</label>
+                                        <input type="text" id="settingFacebook" class="admin-input is-ltr" dir="ltr" placeholder="https://facebook.com/darchatt">
+                                    </div>
+                                    <div class="admin-field">
+                                        <label for="settingInstagram">Instagram</label>
+                                        <input type="text" id="settingInstagram" class="admin-input is-ltr" dir="ltr" placeholder="https://instagram.com/darchatt">
+                                    </div>
+                                    <div class="admin-field">
+                                        <label for="settingTiktok">TikTok</label>
+                                        <input type="text" id="settingTiktok" class="admin-input is-ltr" dir="ltr" placeholder="https://tiktok.com/@darchatt">
+                                    </div>
+                                    <div class="admin-field admin-field-full">
+                                        <label for="settingMapEmbed">رابط خريطة Google Maps</label>
+                                        <input type="text" id="settingMapEmbed" class="admin-input is-ltr" dir="ltr" placeholder="https://www.google.com/maps/embed?pb=...">
+                                        <p class="admin-field-hint">من Google Maps: شارك ← تضمين خريطة ← انسخ الرابط من src. سيظهر في تذييل الموقع.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="admin-btn admin-btn-primary" id="settingsSubmitButton">
+                                    <span id="settingsSubmitLabel">حفظ الإعدادات</span>
+                                </button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <div class="admin-toast" id="adminToast" hidden></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/supabase-config.js"></script>
+    <script src="../js/supabase.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/layout.js"></script>
+    <script src="js/shared.js"></script>
+    <script src="js/pages/settings.js"></script>
+
+</body>
+</html>

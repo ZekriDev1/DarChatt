@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تعديل منتج — دار شاط</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+    <div class="admin-loading" id="adminLoading">
+        <div class="admin-loading-spinner"></div>
+        <div class="admin-loading-text">جاري التحقق من الصلاحيات...</div>
+    </div>
+
+    <div class="admin-layout" id="adminLayout" hidden>
+
+        <aside class="admin-sidebar" id="adminSidebar"></aside>
+
+        <div class="admin-main">
+
+            <header class="admin-topbar" id="adminTopbar"></header>
+
+            <main class="admin-content">
+
+                <div class="admin-card form-card">
+                    <div class="admin-card-header">
+                        <h2 class="admin-card-title">تعديل المنتج</h2>
+                        <a class="admin-btn" href="/admin/products.html">العودة للمنتجات</a>
+                    </div>
+
+                    <div class="admin-card-body">
+                        <form id="productForm" novalidate>
+
+                            <!-- ================= Basic information ================= -->
+
+                            <div class="form-section">
+                                <h3 class="form-section-title">المعلومات الأساسية</h3>
+                                <div class="admin-form-grid">
+                                    <div class="admin-field">
+                                        <label for="productNameAr">اسم المنتج بالعربية <span class="required-mark">*</span></label>
+                                        <input type="text" id="productNameAr" class="admin-input" required placeholder="مثال: عطر دار شاط">
+                                    </div>
+                                    <div class="admin-field">
+                                        <label for="productNameEn">اسم المنتج بالإنجليزية</label>
+                                        <input type="text" id="productNameEn" class="admin-input is-ltr" dir="ltr" placeholder="Dar Chatt Perfume">
+                                    </div>
+                                    <div class="admin-field admin-field-full">
+                                        <label for="productDescriptionAr">وصف المنتج بالعربية</label>
+                                        <textarea id="productDescriptionAr" class="admin-input" rows="4" placeholder="الوصف بالعربية..."></textarea>
+                                    </div>
+                                    <div class="admin-field admin-field-full">
+                                        <label for="productDescriptionEn">وصف المنتج بالإنجليزية</label>
+                                        <textarea id="productDescriptionEn" class="admin-input" rows="3" dir="ltr" placeholder="English description..."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ================= Pricing ================= -->
+
+                            <div class="form-section">
+                                <h3 class="form-section-title">التسعير</h3>
+                                <div class="admin-form-grid">
+                                    <div class="admin-field">
+                                        <label for="productPrice">السعر (درهم) <span class="required-mark">*</span></label>
+                                        <input type="number" id="productPrice" class="admin-input" min="0" step="0.01" required placeholder="0.00">
+                                    </div>
+                                    <div class="admin-field">
+                                        <label for="productOldPrice">السعر القديم (درهم)</label>
+                                        <input type="number" id="productOldPrice" class="admin-input" min="0" step="0.01" placeholder="0.00">
+                                        <p class="admin-field-hint">يُعرض مشطوباً عند تفعيل السعر المخفض.</p>
+                                    </div>
+                                    <div class="admin-field">
+                                        <label class="check-row">
+                                            <input type="checkbox" id="productIsSale">
+                                            <span>تفعيل السعر المخفض</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ================= Inventory ================= -->
+
+                            <div class="form-section">
+                                <h3 class="form-section-title">المخزون</h3>
+                                <div class="admin-form-grid">
+                                    <div class="admin-field">
+                                        <label for="productSku">SKU</label>
+                                        <input type="text" id="productSku" class="admin-input is-ltr" dir="ltr" placeholder="DC-001">
+                                    </div>
+                                    <div class="admin-field">
+                                        <label for="productStock">الكمية <span class="required-mark">*</span></label>
+                                        <input type="number" id="productStock" class="admin-input" min="0" step="1" required value="0">
+                                    </div>
+                                    <div class="admin-field">
+                                        <label for="productStockStatus">حالة المخزون</label>
+                                        <select id="productStockStatus" class="admin-select">
+                                            <option value="in_stock">متوفر</option>
+                                            <option value="low_stock">منخفض</option>
+                                            <option value="out_of_stock">نفد</option>
+                                        </select>
+                                        <p class="admin-field-hint">تُحدَّث تلقائياً حسب الكمية ويمكن تعديلها يدوياً.</p>
+                                    </div>
+                                    <div class="admin-field">
+                                        <label class="check-row">
+                                            <input type="checkbox" id="productAllowOutOfStock">
+                                            <span>السماح بالطلب عند نفاد المخزون</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ================= Category ================= -->
+
+                            <div class="form-section">
+                                <h3 class="form-section-title">التصنيف</h3>
+                                <div class="admin-form-grid">
+                                    <div class="admin-field">
+                                        <label for="productCategory">التصنيف <span class="required-mark">*</span></label>
+                                        <select id="productCategory" class="admin-select" required>
+                                            <option value="">— اختر التصنيف —</option>
+                                        </select>
+                                        <p class="admin-field-hint">يتم تحميل التصنيفات تلقائياً من قاعدة البيانات.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ================= Images ================= -->
+
+                            <div class="form-section">
+                                <h3 class="form-section-title">الصور</h3>
+                                <div class="admin-field">
+                                    <label>صور المنتج</label>
+                                    <div class="admin-image-upload">
+                                        <img id="productMainPreview" class="gallery-main-preview" alt="الصورة الرئيسية" hidden>
+                                        <div class="admin-image-actions">
+                                            <label class="admin-btn admin-image-button">
+                                                إضافة صور
+                                                <input type="file" id="productImagesInput" accept="image/*" multiple hidden>
+                                            </label>
+                                            <button type="button" class="admin-btn admin-btn-danger" id="clearProductImagesButton">
+                                                إزالة الكل
+                                            </button>
+                                        </div>
+                                        <div class="upload-progress" id="productUploadProgress">
+                                            <div class="progress-track">
+                                                <div class="progress-fill" id="productUploadFill"></div>
+                                            </div>
+                                            <p class="upload-progress-text" id="productUploadText"></p>
+                                        </div>
+                                        <p class="admin-field-hint">
+                                            الصورة الأولى هي الرئيسية. يمكن إعادة ترتيب الصور بالأزرار (الأولى ← الرئيسية).
+                                            صيغ JPG / PNG / WebP — الحجم الأقصى 2MB للصورة.
+                                        </p>
+                                        <div class="image-gallery" id="productGallery"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ================= Status ================= -->
+
+                            <div class="form-section">
+                                <h3 class="form-section-title">الحالة</h3>
+                                <div class="admin-form-grid">
+                                    <div class="admin-field">
+                                        <label for="productStatus">حالة المنتج</label>
+                                        <select id="productStatus" class="admin-select">
+                                            <option value="true">نشط</option>
+                                            <option value="false">غير نشط</option>
+                                        </select>
+                                    </div>
+                                    <div class="admin-field">
+                                        <label class="check-row">
+                                            <input type="checkbox" id="productFeatured">
+                                            <span>منتج مميز</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ================= SEO ================= -->
+
+                            <div class="form-section">
+                                <h3 class="form-section-title">SEO</h3>
+                                <div class="admin-form-grid">
+                                    <div class="admin-field">
+                                        <label for="productSlug">Slug <span class="required-mark">*</span></label>
+                                        <input type="text" id="productSlug" class="admin-input is-ltr" dir="ltr" required placeholder="dar-chatt-perfume">
+                                        <p class="admin-field-hint">يُولّد تلقائياً من الاسم ويمكن تعديله يدوياً. يجب أن يكون فريداً.</p>
+                                    </div>
+                                    <div class="admin-field">
+                                        <label for="productMetaTitle">Meta Title</label>
+                                        <input type="text" id="productMetaTitle" class="admin-input" placeholder="عنوان صفحة محرك البحث">
+                                    </div>
+                                    <div class="admin-field admin-field-full">
+                                        <label for="productMetaDescription">Meta Description</label>
+                                        <textarea id="productMetaDescription" class="admin-input" rows="2" placeholder="وصف صفحة محرك البحث"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <a class="admin-btn" href="/admin/products.html">إلغاء</a>
+                                <button type="submit" class="admin-btn admin-btn-primary" id="productSubmitButton">
+                                    <span id="productSubmitLabel">حفظ المنتج</span>
+                                </button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <div class="admin-toast" id="adminToast" hidden></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/supabase-config.js"></script>
+    <script src="../js/supabase.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/layout.js"></script>
+    <script src="js/shared.js"></script>
+    <script src="js/pages/product-form.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول أو إنشاء حساب — دار شاط</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="auth-page" dir="rtl">
+
+        <div class="auth-container">
+
+            <div class="auth-card">
+
+                <div class="auth-brand">
+                    <a href="index.html" aria-label="دار شاط - الصفحة الرئيسية">
+                        <img src="assets/logo.png" alt="دار شاط" class="auth-logo">
+                    </a>
+                    <h1 class="auth-title">مرحباً بك في دار شاط</h1>
+                    <p class="auth-subtitle">سجّل الدخول لمتابعة طلباتك أو أنشئ حساباً جديداً</p>
+                </div>
+
+                <div class="auth-tabs" role="tablist">
+                    <button
+                        type="button"
+                        class="auth-tab is-active"
+                        id="loginTab"
+                        role="tab"
+                        aria-selected="true"
+                    >
+                        تسجيل الدخول
+                    </button>
+                    <button
+                        type="button"
+                        class="auth-tab"
+                        id="signupTab"
+                        role="tab"
+                        aria-selected="false"
+                    >
+                        إنشاء حساب
+                    </button>
+                </div>
+
+                <div class="auth-error" id="authError" role="alert" hidden></div>
+
+                <div class="auth-success" id="authSuccess" role="status" hidden></div>
+
+                <!-- ============ Login form ============ -->
+
+                <form id="loginForm" class="auth-form" novalidate>
+
+                    <div class="auth-field">
+                        <label for="loginEmail">البريد الإلكتروني</label>
+                        <input
+                            type="email"
+                            id="loginEmail"
+                            class="auth-input"
+                            autocomplete="email"
+                            required
+                            placeholder="example@email.com"
+                        >
+                    </div>
+
+                    <div class="auth-field">
+                        <label for="loginPassword">كلمة المرور</label>
+                        <input
+                            type="password"
+                            id="loginPassword"
+                            class="auth-input"
+                            autocomplete="current-password"
+                            required
+                            placeholder="••••••••"
+                        >
+                    </div>
+
+                    <button type="submit" class="auth-btn" id="loginSubmitButton">
+                        <span id="loginSubmitLabel">تسجيل الدخول</span>
+                    </button>
+
+                </form>
+
+                <!-- ============ Signup form ============ -->
+
+                <form id="signupForm" class="auth-form" novalidate hidden>
+
+                    <div class="auth-field">
+                        <label for="signupName">الاسم الكامل</label>
+                        <input
+                            type="text"
+                            id="signupName"
+                            class="auth-input"
+                            autocomplete="name"
+                            required
+                            placeholder="اسمك الكامل"
+                        >
+                    </div>
+
+                    <div class="auth-field">
+                        <label for="signupEmail">البريد الإلكتروني</label>
+                        <input
+                            type="email"
+                            id="signupEmail"
+                            class="auth-input"
+                            autocomplete="email"
+                            required
+                            placeholder="example@email.com"
+                        >
+                    </div>
+
+                    <div class="auth-field">
+                        <label for="signupPassword">كلمة المرور</label>
+                        <input
+                            type="password"
+                            id="signupPassword"
+                            class="auth-input"
+                            autocomplete="new-password"
+                            minlength="6"
+                            required
+                            placeholder="6 أحرف على الأقل"
+                        >
+                    </div>
+
+                    <button type="submit" class="auth-btn" id="signupSubmitButton">
+                        <span id="signupSubmitLabel">إنشاء الحساب</span>
+                    </button>
+
+                </form>
+
+                <div class="auth-footer">
+                    <a href="index.html">العودة إلى المتجر</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-config.js"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/signin.js"></script>
+
+</body>
+</html>
