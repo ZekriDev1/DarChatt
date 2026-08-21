@@ -9,9 +9,12 @@
 //   js/supabase-config.js  — Supabase client settings
 //   js/ai-config.js        — Google AI (Gemini) settings for the assistant
 // The .env file itself is never served to the browser (see .gitignore).
+//
+// On Netlify / CI the environment variables are injected via
+// process.env, so the .env file is optional there.
 // =============================================================
 
-import { readFileSync, writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 
@@ -84,28 +87,42 @@ function generateAiConfig(env) {
     ].join("\n");
 }
 
-try {
-    const envContent = readFileSync(envPath, "utf8");
-    const env = parseEnv(envContent);
+// -----------------------------------------------------------------
+// Merge sources: .env file (if it exists) + process.env
+// process.env takes priority so Netlify / CI env vars always win.
+// -----------------------------------------------------------------
+let fileEnv = {};
 
-    if (!env.SUPABASE_URL || !env.SUPABASE_ANON_KEY) {
-        console.error(
-            "[dar-chatt] .env is missing SUPABASE_URL or SUPABASE_ANON_KEY."
-        );
-        console.error(
-            "[dar-chatt] Fill them in first (see .env.example), then re-run this script."
-        );
-        process.exit(1);
-    }
+if (existsSync(envPath)) {
+    fileEnv = parseEnv(readFileSync(envPath, "utf8"));
+    console.log("[dar-chatt] Loaded .env file");
+} else {
+    console.log("[dar-chatt] No .env file found — using process.env only");
+}
 
-    writeFileSync(configPath, generateConfig(env), "utf8");
-    writeFileSync(aiConfigPath, generateAiConfig(env), "utf8");
-    console.log("[dar-chatt] js/supabase-config.js generated from .env");
-    console.log("[dar-chatt] js/ai-config.js generated from .env");
-} catch (err) {
-    console.error("[dar-chatt] Could not read .env file:", err.message);
+const KEYS = [
+    "SUPABASE_URL",
+    "SUPABASE_ANON_KEY",
+    "GOOGLE_AI_API_KEY",
+    "GOOGLE_AI_MODEL"
+];
+
+const env = {};
+for (const key of KEYS) {
+    env[key] = process.env[key] || fileEnv[key] || "";
+}
+
+if (!env.SUPABASE_URL || !env.SUPABASE_ANON_KEY) {
     console.error(
-        "[dar-chatt] Copy .env.example to .env, fill your Supabase values, then re-run."
+        "[dar-chatt] Missing SUPABASE_URL or SUPABASE_ANON_KEY."
+    );
+    console.error(
+        "[dar-chatt] Set them in .env (local) or as environment variables (Netlify)."
     );
     process.exit(1);
 }
+
+writeFileSync(configPath, generateConfig(env), "utf8");
+writeFileSync(aiConfigPath, generateAiConfig(env), "utf8");
+console.log("[dar-chatt] js/supabase-config.js generated ✓");
+console.log("[dar-chatt] js/ai-config.js generated ✓");
