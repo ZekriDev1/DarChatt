@@ -295,6 +295,94 @@
     }
 
     // ---------------------------------------------------------
+    // Cart + wishlist action buttons
+    // ---------------------------------------------------------
+
+    var WISHLIST_KEY = "darchatt_wishlist";
+
+    function readWishlist() {
+        try {
+            var raw = localStorage.getItem(WISHLIST_KEY);
+            var ids = raw ? JSON.parse(raw) : [];
+            return Array.isArray(ids) ? ids : [];
+        } catch (err) {
+            return [];
+        }
+    }
+
+    function writeWishlist(ids) {
+        try {
+            localStorage.setItem(WISHLIST_KEY, JSON.stringify(ids));
+        } catch (err) {
+            console.error("product.js:", err);
+        }
+    }
+
+    function inWishlist() {
+        return readWishlist().indexOf(product.id) !== -1;
+    }
+
+    function toggleWishlist(button) {
+        var ids = readWishlist();
+        var index = ids.indexOf(product.id);
+
+        if (index === -1) {
+            ids.push(product.id);
+        } else {
+            ids.splice(index, 1);
+        }
+
+        writeWishlist(ids);
+        updateWishlistButton(button);
+    }
+
+    function updateWishlistButton(button) {
+        if (!button) return;
+        button.classList.toggle("is-active", inWishlist());
+        button.setAttribute("aria-pressed", String(inWishlist()));
+        button.querySelector("span").textContent = inWishlist()
+            ? "إزالة من المفضلة"
+            : "أضف إلى المفضلة";
+    }
+
+    function renderActionButtons() {
+        if (!elements.orderBox || isOutOfStock()) return;
+
+        var existing = document.getElementById("productActionButtons");
+        if (existing) existing.remove();
+
+        var box = document.createElement("div");
+        box.id = "productActionButtons";
+        box.className = "product-action-buttons";
+        box.innerHTML =
+            '<button type="button" class="product-cart-btn" id="addToCartButton">' +
+            "أضف إلى السلة" +
+            "</button>" +
+            '<button type="button" class="product-wishlist-btn" aria-pressed="false" id="wishlistToggleButton">' +
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21C12 21 3 14.5 3 8.5C3 5.5 5.5 3.5 8 3.5C9.8 3.5 11.2 4.5 12 6C12.8 4.5 14.2 3.5 16 3.5C18.5 3.5 21 5.5 21 8.5C21 14.5 12 21 12 21Z"/></svg>' +
+            "<span>أضف إلى المفضلة</span>" +
+            "</button>";
+
+        elements.orderBox.insertBefore(box, elements.orderForm);
+
+        var addToCartButton = document.getElementById("addToCartButton");
+        if (addToCartButton) {
+            addToCartButton.addEventListener("click", function () {
+                window.DarChattCart.add(product);
+                window.DarChattCart.open();
+            });
+        }
+
+        var wishlistButton = document.getElementById("wishlistToggleButton");
+        if (wishlistButton) {
+            wishlistButton.addEventListener("click", function () {
+                toggleWishlist(wishlistButton);
+            });
+            updateWishlistButton(wishlistButton);
+        }
+    }
+
+    // ---------------------------------------------------------
     // Init
     // ---------------------------------------------------------
 
@@ -350,6 +438,7 @@
         renderInfo();
         bindQuantity();
         setQuantity(1);
+        renderActionButtons();
 
         elements.orderForm.addEventListener("submit", placeOrder);
     }

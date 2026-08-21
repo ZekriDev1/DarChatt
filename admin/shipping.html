@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الشحن والتوصيل — دار الشاط</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+    <div class="admin-loading" id="adminLoading">
+        <div class="admin-loading-spinner"></div>
+        <div class="admin-loading-text">جاري التحقق من الصلاحيات...</div>
+    </div>
+
+    <div class="admin-layout" id="adminLayout" hidden>
+
+        <aside class="admin-sidebar" id="adminSidebar"></aside>
+
+        <div class="admin-main">
+
+            <header class="admin-topbar" id="adminTopbar"></header>
+
+            <main class="admin-content">
+
+                <div class="admin-card">
+                    <div class="admin-card-header">
+                        <h2 class="admin-card-title">إعدادات الشحن والتوصيل</h2>
+                    </div>
+
+                    <div class="admin-form-grid" id="shippingFormWrap">
+
+                        <div class="admin-field">
+                            <label for="shippingFee">رسوم التوصيل (درهم)</label>
+                            <input
+                                type="number"
+                                class="admin-input"
+                                id="shippingFee"
+                                min="0"
+                                step="0.01"
+                                inputmode="decimal"
+                                placeholder="مثال: 30"
+                            >
+                            <p class="admin-field-hint">تُطبَّق على كل طلب لا يصل إلى حد التوصيل المجاني.</p>
+                        </div>
+
+                        <div class="admin-field">
+                            <label for="freeShippingThreshold">حد التوصيل المجاني (درهم)</label>
+                            <input
+                                type="number"
+                                class="admin-input"
+                                id="freeShippingThreshold"
+                                min="0"
+                                step="0.01"
+                                inputmode="decimal"
+                                placeholder="مثال: 500"
+                            >
+                            <p class="admin-field-hint">عندما يتجاوز إجمالي الطلب هذا المبلغ تصبح رسوم التوصيل 0. اتركه 0 لتعطيل التوصيل المجاني.</p>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="admin-btn admin-btn-primary" id="saveShippingButton">
+                                حفظ الإعدادات
+                            </button>
+                            <button type="button" class="admin-btn" id="resetShippingButton" hidden>
+                                إعادة التحميل
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <p class="settings-note">
+                        ملاحظة: تُستخدم هذه الإعدادات تلقائياً عند إنشاء الطلبات من المتجر (الدفع عند الاستلام).
+                    </p>
+                </div>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <div class="admin-toast" id="adminToast" hidden></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/supabase-config.js"></script>
+    <script src="../js/supabase.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/layout.js"></script>
+    <script src="js/shared.js"></script>
+    <script src="js/pages/shipping.js"></script>
+
+</body>
+</html>

@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>تفاصيل المنتج — دار الشاط</title>
+    <title>الأسئلة الشائعة — دار الشاط</title>
 
     <meta
         name="description"
-        content="تفاصيل المنتج"
+        content="أجوبة على الأسئلة الشائعة حول الطلبات والتوصيل والاسترجاع."
     >
 
     <link rel="stylesheet" href="css/style.css">
@@ -20,7 +20,6 @@
     <!-- =========================
          Navigation Bar
     ========================== -->
-
 <nav class="navbar" dir="rtl">
 
         <div class="nav-container">
@@ -535,131 +534,169 @@
     </aside>
 
 
+
     <!-- =========================
-         Product Detail
+         Main Content
     ========================== -->
 
-    <main class="shop-page" dir="rtl">
+    <section class="page-hero">
 
-        <div class="shop-loading" id="productLoading">
-            <div class="shop-loading-spinner"></div>
-            <p>جاري تحميل المنتج...</p>
-        </div>
+            <p class="section-eyebrow">مساعدة</p>
+            <h1 class="page-hero-title">الأسئلة الشائعة</h1>
+            <p class="page-hero-subtitle">إجابات عن أكثر الأسئلة تكراراً حول الطلبات والشحن والدفع</p>
 
-        <div class="shop-error" id="productError" hidden>
-            <p>تعذر تحميل المنتج. قد يكون غير متاح حالياً.</p>
-            <a href="shop.html" class="filter-button">العودة إلى المتجر</a>
-        </div>
+        </section>
 
-        <div id="productContent" hidden>
+        <section class="info-container">
 
-            <nav class="product-breadcrumb" aria-label="مسار التنقل" data-reveal>
-                <a href="index.html">الرئيسية</a>
-                <span aria-hidden="true">/</span>
-                <a href="shop.html">المتجر</a>
-                <span aria-hidden="true">/</span>
-                <span id="productBreadcrumbCategory"></span>
-            </nav>
+            <div class="faq-group">
 
-            <div class="product-detail">
+                <h2 class="faq-group-title">الطلبات</h2>
 
-                <!-- Gallery -->
-                <div class="product-gallery" id="productGallery"></div>
-
-                <!-- Info + Order -->
-                <div class="product-detail-info">
-
-                    <div id="productBadges"></div>
-
-                    <h1 class="product-detail-title" id="productTitle"></h1>
-
-                    <div class="product-detail-price-row" id="productPriceRow"></div>
-
-                    <p class="product-detail-stock" id="productStock"></p>
-
-                    <div class="product-detail-description" id="productDescription"></div>
-
-                    <div class="product-order-box" id="productOrderBox">
-
-                        <h2 class="product-order-title">اطلب هذا المنتج</h2>
-
-                        <p class="product-order-note">
-                            الدفع عند الاستلام — الشحن عبر المدن المتاحة.
-                        </p>
-
-                        <div class="product-quantity-row">
-                            <label for="orderQuantity" class="product-order-label">الكمية</label>
-                            <div class="quantity-control">
-                                <button type="button" id="quantityMinus" aria-label="إنقاص الكمية">−</button>
-                                <input type="number" id="orderQuantity" value="1" min="1" max="99" inputmode="numeric">
-                                <button type="button" id="quantityPlus" aria-label="زيادة الكمية">+</button>
-                            </div>
-                        </div>
-
-                        <form id="orderForm" novalidate>
-
-                            <div class="product-order-field">
-                                <label for="orderName">الاسم الكامل <span class="required-mark">*</span></label>
-                                <input type="text" id="orderName" class="order-input" autocomplete="name" required>
-                            </div>
-
-                            <div class="product-order-field">
-                                <label for="orderPhone">رقم الهاتف <span class="required-mark">*</span></label>
-                                <input type="tel" id="orderPhone" class="order-input is-ltr" dir="ltr" autocomplete="tel" required>
-                            </div>
-
-                            <div class="product-order-field">
-                                <label for="orderEmail">البريد الإلكتروني (اختياري)</label>
-                                <input type="email" id="orderEmail" class="order-input is-ltr" dir="ltr" autocomplete="email">
-                            </div>
-
-                            <div class="product-order-field">
-                                <label for="orderCity">المدينة <span class="required-mark">*</span></label>
-                                <input type="text" id="orderCity" class="order-input" autocomplete="address-level2" required>
-                            </div>
-
-                            <div class="product-order-field">
-                                <label for="orderAddress">العنوان <span class="required-mark">*</span></label>
-                                <textarea id="orderAddress" class="order-input" rows="2" autocomplete="street-address" required></textarea>
-                            </div>
-
-                            <div class="product-order-field">
-                                <label for="orderNotes">ملاحظات (اختياري)</label>
-                                <textarea id="orderNotes" class="order-input" rows="2"></textarea>
-                            </div>
-
-                            <button type="submit" class="order-submit" id="orderSubmitButton">
-                                <span id="orderSubmitLabel">تأكيد الطلب</span>
-                            </button>
-
-                        </form>
-
+                <div class="faq-item">
+                    <button type="button" class="faq-question" aria-expanded="false">
+                        كيف أطلب منتجاً من دار الشاط؟
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>أضف المنتجات إلى سلة التسوق، ثم اضغط "إتمام الطلب" واملأ بيانات الاسم والعنوان ورقم الهاتف، وسيتواصل معك فريقنا لتأكيد الطلب.</p>
                     </div>
+                </div>
 
-                    <div class="order-success" id="orderSuccess" hidden>
-                        <h2>تم استلام طلبك بنجاح</h2>
-                        <p>رقم الطلب: <strong id="orderSuccessNumber"></strong></p>
-                        <p id="orderSuccessTotal"></p>
-                        <p class="order-success-note">
-                            سيتواصل معك فريقنا لتأكيد الطلب والشحن. الدفع عند الاستلام.
-                        </p>
-                        <a href="shop.html" class="filter-button">متابعة التسوق</a>
+                <div class="faq-item">
+                    <button type="button" class="faq-question" aria-expanded="false">
+                        هل يمكنني تعديل أو إلغاء طلبي بعد إرساله؟
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>يمكنك إلغاء الطلب قبل شحنه عبر التواصل معنا بالهاتف أو واتساب، وسنقوم بإلغائه دون أي تكلفة.</p>
                     </div>
+                </div>
 
+                <div class="faq-item">
+                    <button type="button" class="faq-question" aria-expanded="false">
+                        كيف أتتبع طلبي؟
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>استخدم صفحة "تتبع الطلب" وأدخل رقم الطلب (مثال: DC-2026-0001)، أو تابع طلباتك من صفحة حسابي.</p>
+                    </div>
                 </div>
 
             </div>
 
-        </div>
+            <div class="faq-group">
 
-    </main>
+                <h2 class="faq-group-title">الشحن والتوصيل</h2>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-question" aria-expanded="false">
+                        ما هي مدة التوصيل؟
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>تختلف المدة حسب المدينة. راجع صفحة سياسة الشحن لمعرفة التفاصيل الخاصة بمدينتك.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-question" aria-expanded="false">
+                        هل توفرون التوصيل لجميع المدن؟
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>نوصل الطلبات إلى أغلب المدن المغربية. تواصل معنا للتأكد من تغطية مدينتك.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="faq-group">
+
+                <h2 class="faq-group-title">الدفع</h2>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-question" aria-expanded="false">
+                        ما هي طرق الدفع المتوفرة؟
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>نوفر حالياً الدفع عند الاستلام نقداً، وهو الطريقة المتاحة لجميع الطلبات.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-question" aria-expanded="false">
+                        هل الدفع عند الاستلام متاح لجميع الطلبات؟
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>نعم، يمكنك الدفع نقداً عند استلام طلبك مباشرة من مندوب التوصيل.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="faq-group">
+
+                <h2 class="faq-group-title">الاسترجاع والاستبدال</h2>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-question" aria-expanded="false">
+                        هل يمكنني استرجاع منتج؟
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>نعم، راجع صفحة سياسة الاسترجاع والاستبدال لمعرفة الشروط والأحكام الخاصة بالمنتجات.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="faq-group">
+
+                <h2 class="faq-group-title">الحسابات</h2>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-question" aria-expanded="false">
+                        كيف أنشئ حساباً؟
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>اضغط على أيقونة الحساب في الأعلى ثم "إنشاء حساب"، أو توجه إلى صفحة تسجيل الدخول واملأ بياناتك.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-question" aria-expanded="false">
+                        نسيت كلمة المرور، ماذا أفعل؟
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>استخدم صفحة "نسيت كلمة المرور" وأدخل بريدك الإلكتروني، وسنرسل لك رابطاً لإعادة تعيينها.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-question" aria-expanded="false">
+                        هل أحتاج حساباً لإتمام الطلب؟
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>نعم، يتطلب إتمام الطلب تسجيل الدخول حتى تتمكن من تتبع طلباتك ومتابعتها من حسابك.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
 
 
     <!-- =========================
          Footer
     ========================== -->
 
-<footer class="footer">
+    <footer class="footer">
 
         <div class="footer-container">
 
@@ -774,14 +811,13 @@
     <!-- Account -->
     <script src="js/account-menu.js"></script>
 
-    <!-- Main Script -->
-    <script src="js/script.js"></script>
-
     <!-- Footer -->
     <script src="js/footer.js"></script>
 
-    <!-- Product Detail -->
-    <script src="js/product.js"></script>
+    <!-- Main Script -->
+    <script src="js/script.js"></script>
+
+<script src=js/faq.js></script>
 
 
 

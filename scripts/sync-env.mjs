@@ -5,7 +5,9 @@
 //   node scripts/sync-env.mjs
 //
 // Reads SUPABASE_URL and SUPABASE_ANON_KEY from .env and
-// regenerates the shared browser config file at js/supabase-config.js.
+// regenerates the shared browser config files:
+//   js/supabase-config.js  — Supabase client settings
+//   js/ai-config.js        — Google AI (Gemini) settings for the assistant
 // The .env file itself is never served to the browser (see .gitignore).
 // =============================================================
 
@@ -16,6 +18,7 @@ import path from "node:path";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const envPath = path.join(root, ".env");
 const configPath = path.join(root, "js", "supabase-config.js");
+const aiConfigPath = path.join(root, "js", "ai-config.js");
 
 function parseEnv(content) {
     const values = {};
@@ -62,6 +65,25 @@ function generateConfig(env) {
     ].join("\n");
 }
 
+function generateAiConfig(env) {
+    const apiKey = env.GOOGLE_AI_API_KEY || "YOUR-GOOGLE-AI-API-KEY";
+    const model = env.GOOGLE_AI_MODEL || "gemini-2.5-flash";
+
+    return [
+        "// =============================================================",
+        "// Dar Chatt — Google AI (Gemini) Configuration",
+        "// GENERATED FILE — do not edit manually.",
+        "// Regenerate with:  node scripts/sync-env.mjs",
+        "// =============================================================",
+        "",
+        "window.DARCHATT_AI = {",
+        `    apiKey: ${JSON.stringify(apiKey)},`,
+        `    model: ${JSON.stringify(model)}`,
+        "};",
+        ""
+    ].join("\n");
+}
+
 try {
     const envContent = readFileSync(envPath, "utf8");
     const env = parseEnv(envContent);
@@ -77,7 +99,9 @@ try {
     }
 
     writeFileSync(configPath, generateConfig(env), "utf8");
+    writeFileSync(aiConfigPath, generateAiConfig(env), "utf8");
     console.log("[dar-chatt] js/supabase-config.js generated from .env");
+    console.log("[dar-chatt] js/ai-config.js generated from .env");
 } catch (err) {
     console.error("[dar-chatt] Could not read .env file:", err.message);
     console.error(

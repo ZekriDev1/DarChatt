@@ -119,7 +119,7 @@
         drawer.querySelector("#cartCheckoutBtn").addEventListener("click", function () {
             var items = read();
             if (items.length === 0) return;
-            alert("الدفع عبر الموقع قريباً — سيتم التواصل معك عبر واتساب.");
+            window.location.href = "checkout.html";
         });
 
         itemsList = drawer.querySelector("#cartItems");

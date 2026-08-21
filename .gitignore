@@ -13,3 +13,5 @@ npm-debug.log*
 # OS
 .DS_Store
 Thumbs.db
+# Google AI browser config (generated from .env — never commit)
+js/ai-config.js

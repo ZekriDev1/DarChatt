@@ -15,7 +15,8 @@
     var state = {
         categories: [],
         products: [],
-        activeCategory: null // category slug (null / "all" = all products)
+        activeCategory: null, // category slug (null / "all" = all products)
+        sort: "newest" // newest | price-asc | price-desc
     };
 
     var elements = {};
@@ -117,6 +118,51 @@
     }
 
     // ---------------------------------------------------------
+    // Sorting
+    // ---------------------------------------------------------
+
+    function sortedProducts() {
+        var list = state.products.slice();
+
+        if (state.sort === "price-asc") {
+            list.sort(function (a, b) {
+                return Number(a.price) - Number(b.price);
+            });
+        } else if (state.sort === "price-desc") {
+            list.sort(function (a, b) {
+                return Number(b.price) - Number(a.price);
+            });
+        }
+
+        return list;
+    }
+
+    function injectSortSelect() {
+        var container = document.getElementById("shopCategoryFilters");
+        if (!container || document.getElementById("shopSortSelect")) return;
+
+        var wrap = document.createElement("div");
+        wrap.className = "shop-sort-wrap";
+        wrap.innerHTML =
+            '<label class="shop-sort-label" for="shopSortSelect">ترتيب:</label>' +
+            '<select class="shop-sort-select" id="shopSortSelect">' +
+            '<option value="newest">الأحدث</option>' +
+            '<option value="price-asc">السعر: من الأقل للأعلى</option>' +
+            '<option value="price-desc">السعر: من الأعلى للأقل</option>' +
+            "</select>";
+
+        container.appendChild(wrap);
+
+        var select = document.getElementById("shopSortSelect");
+        if (select) {
+            select.addEventListener("change", function () {
+                state.sort = select.value;
+                renderProducts();
+            });
+        }
+    }
+
+    // ---------------------------------------------------------
     // Render product cards
     // ---------------------------------------------------------
 
@@ -174,7 +220,7 @@
 
     function renderProducts() {
         var html = "";
-        state.products.forEach(function (product) {
+        sortedProducts().forEach(function (product) {
             html += cardHtml(product);
         });
 
@@ -287,6 +333,8 @@
         });
 
         showLoading();
+
+        injectSortSelect();
 
         Promise.all([fetchCategories(), fetchProducts()])
             .then(function (results) {

@@ -95,8 +95,8 @@
         }
 
         target.innerHTML =
-            '<a class="account-item" href="index.html">حسابي</a>' +
-            '<a class="account-item" href="index.html">طلباتي</a>' +
+            '<a class="account-item" href="account/index.html">حسابي</a>' +
+            '<a class="account-item" href="account/orders.html">طلباتي</a>' +
             adminItem +
             '<div class="dropdown-divider"></div>' +
             '<button type="button" class="account-item account-item-danger">' +

@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>تفاصيل المنتج — دار الشاط</title>
+    <title>اتصل بنا — دار الشاط</title>
 
     <meta
         name="description"
-        content="تفاصيل المنتج"
+        content="تواصل مع دار الشاط عبر الهاتف أو واتساب أو البريد الإلكتروني."
     >
 
     <link rel="stylesheet" href="css/style.css">
@@ -20,7 +20,6 @@
     <!-- =========================
          Navigation Bar
     ========================== -->
-
 <nav class="navbar" dir="rtl">
 
         <div class="nav-container">
@@ -535,131 +534,103 @@
     </aside>
 
 
+
     <!-- =========================
-         Product Detail
+         Main Content
     ========================== -->
 
-    <main class="shop-page" dir="rtl">
+    <section class="page-hero">
 
-        <div class="shop-loading" id="productLoading">
-            <div class="shop-loading-spinner"></div>
-            <p>جاري تحميل المنتج...</p>
-        </div>
+            <p class="section-eyebrow">تواصل معنا</p>
+            <h1 class="page-hero-title">اتصل بنا</h1>
+            <p class="page-hero-subtitle">نحن هنا لمساعدتك — لا تتردد في التواصل معنا</p>
 
-        <div class="shop-error" id="productError" hidden>
-            <p>تعذر تحميل المنتج. قد يكون غير متاح حالياً.</p>
-            <a href="shop.html" class="filter-button">العودة إلى المتجر</a>
-        </div>
+        </section>
 
-        <div id="productContent" hidden>
+        <section class="info-container">
 
-            <nav class="product-breadcrumb" aria-label="مسار التنقل" data-reveal>
-                <a href="index.html">الرئيسية</a>
-                <span aria-hidden="true">/</span>
-                <a href="shop.html">المتجر</a>
-                <span aria-hidden="true">/</span>
-                <span id="productBreadcrumbCategory"></span>
-            </nav>
+            <div class="contact-grid">
 
-            <div class="product-detail">
+                <div class="contact-info">
 
-                <!-- Gallery -->
-                <div class="product-gallery" id="productGallery"></div>
-
-                <!-- Info + Order -->
-                <div class="product-detail-info">
-
-                    <div id="productBadges"></div>
-
-                    <h1 class="product-detail-title" id="productTitle"></h1>
-
-                    <div class="product-detail-price-row" id="productPriceRow"></div>
-
-                    <p class="product-detail-stock" id="productStock"></p>
-
-                    <div class="product-detail-description" id="productDescription"></div>
-
-                    <div class="product-order-box" id="productOrderBox">
-
-                        <h2 class="product-order-title">اطلب هذا المنتج</h2>
-
-                        <p class="product-order-note">
-                            الدفع عند الاستلام — الشحن عبر المدن المتاحة.
+                    <div class="contact-block">
+                        <h3 class="contact-block-title">الهاتف</h3>
+                        <p class="contact-block-text">
+                            <a href="tel:0631484377" dir="ltr">0631484377</a>
                         </p>
+                    </div>
 
-                        <div class="product-quantity-row">
-                            <label for="orderQuantity" class="product-order-label">الكمية</label>
-                            <div class="quantity-control">
-                                <button type="button" id="quantityMinus" aria-label="إنقاص الكمية">−</button>
-                                <input type="number" id="orderQuantity" value="1" min="1" max="99" inputmode="numeric">
-                                <button type="button" id="quantityPlus" aria-label="زيادة الكمية">+</button>
-                            </div>
+                    <div class="contact-block">
+                        <h3 class="contact-block-title">البريد الإلكتروني</h3>
+                        <p class="contact-block-text">
+                            <a href="mailto:contact@darchatt.com" dir="ltr">contact@darchatt.com</a>
+                        </p>
+                    </div>
+
+                    <div class="contact-block">
+                        <h3 class="contact-block-title">ساعات العمل</h3>
+                        <p class="contact-block-text">يومياً من 9 صباحاً حتى 9 مساءً.</p>
+                    </div>
+
+                    <div class="contact-block">
+                        <h3 class="contact-block-title">الرد على الرسائل</h3>
+                        <p class="contact-block-text">
+                            نرد على استفساراتكم عادة خلال 24 ساعة من استلامها.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="contact-form-wrap">
+
+                    <h3 class="contact-block-title">أرسل لنا رسالة</h3>
+
+                    <form id="contactForm" class="auth-form" novalidate>
+
+                        <div class="auth-field">
+                            <label for="contactName">الاسم الكامل</label>
+                            <input type="text" id="contactName" class="auth-input" autocomplete="name" required placeholder="اسمك الكامل">
                         </div>
 
-                        <form id="orderForm" novalidate>
+                        <div class="auth-field">
+                            <label for="contactEmail">البريد الإلكتروني</label>
+                            <input type="email" id="contactEmail" class="auth-input" autocomplete="email" required placeholder="example@email.com">
+                        </div>
 
-                            <div class="product-order-field">
-                                <label for="orderName">الاسم الكامل <span class="required-mark">*</span></label>
-                                <input type="text" id="orderName" class="order-input" autocomplete="name" required>
-                            </div>
+                        <div class="auth-field">
+                            <label for="contactSubject">الموضوع</label>
+                            <input type="text" id="contactSubject" class="auth-input" required placeholder="موضوع الرسالة">
+                        </div>
 
-                            <div class="product-order-field">
-                                <label for="orderPhone">رقم الهاتف <span class="required-mark">*</span></label>
-                                <input type="tel" id="orderPhone" class="order-input is-ltr" dir="ltr" autocomplete="tel" required>
-                            </div>
+                        <div class="auth-field">
+                            <label for="contactMessage">الرسالة</label>
+                            <textarea id="contactMessage" class="auth-input auth-textarea" rows="5" required placeholder="اكتب رسالتك هنا..."></textarea>
+                        </div>
 
-                            <div class="product-order-field">
-                                <label for="orderEmail">البريد الإلكتروني (اختياري)</label>
-                                <input type="email" id="orderEmail" class="order-input is-ltr" dir="ltr" autocomplete="email">
-                            </div>
+                        <button type="submit" class="auth-btn" id="contactSubmitButton">
+                            <span id="contactSubmitLabel">إرسال عبر واتساب</span>
+                        </button>
 
-                            <div class="product-order-field">
-                                <label for="orderCity">المدينة <span class="required-mark">*</span></label>
-                                <input type="text" id="orderCity" class="order-input" autocomplete="address-level2" required>
-                            </div>
-
-                            <div class="product-order-field">
-                                <label for="orderAddress">العنوان <span class="required-mark">*</span></label>
-                                <textarea id="orderAddress" class="order-input" rows="2" autocomplete="street-address" required></textarea>
-                            </div>
-
-                            <div class="product-order-field">
-                                <label for="orderNotes">ملاحظات (اختياري)</label>
-                                <textarea id="orderNotes" class="order-input" rows="2"></textarea>
-                            </div>
-
-                            <button type="submit" class="order-submit" id="orderSubmitButton">
-                                <span id="orderSubmitLabel">تأكيد الطلب</span>
-                            </button>
-
-                        </form>
-
-                    </div>
-
-                    <div class="order-success" id="orderSuccess" hidden>
-                        <h2>تم استلام طلبك بنجاح</h2>
-                        <p>رقم الطلب: <strong id="orderSuccessNumber"></strong></p>
-                        <p id="orderSuccessTotal"></p>
-                        <p class="order-success-note">
-                            سيتواصل معك فريقنا لتأكيد الطلب والشحن. الدفع عند الاستلام.
+                        <p class="contact-hint">
+                            يتم إرسال رسالتك مباشرة عبر واتساب إلى فريق دار الشاط.
                         </p>
-                        <a href="shop.html" class="filter-button">متابعة التسوق</a>
-                    </div>
+
+                    </form>
+
+                    <div class="auth-success" id="contactSuccess" role="status" hidden></div>
 
                 </div>
 
             </div>
 
-        </div>
-
-    </main>
+        </section>
 
 
     <!-- =========================
          Footer
     ========================== -->
 
-<footer class="footer">
+    <footer class="footer">
 
         <div class="footer-container">
 
@@ -774,14 +745,13 @@
     <!-- Account -->
     <script src="js/account-menu.js"></script>
 
-    <!-- Main Script -->
-    <script src="js/script.js"></script>
-
     <!-- Footer -->
     <script src="js/footer.js"></script>
 
-    <!-- Product Detail -->
-    <script src="js/product.js"></script>
+    <!-- Main Script -->
+    <script src="js/script.js"></script>
+
+<script src=js/contact.js></script>
 
 
 

@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>تفاصيل المنتج — دار الشاط</title>
+    <title>إتمام الطلب — دار الشاط</title>
 
     <meta
         name="description"
-        content="تفاصيل المنتج"
+        content="إتمام الطلب بالدفع عند الاستلام في دار الشاط."
     >
 
     <link rel="stylesheet" href="css/style.css">
@@ -20,7 +20,6 @@
     <!-- =========================
          Navigation Bar
     ========================== -->
-
 <nav class="navbar" dir="rtl">
 
         <div class="nav-container">
@@ -535,131 +534,119 @@
     </aside>
 
 
+
     <!-- =========================
-         Product Detail
+         Main Content
     ========================== -->
 
-    <main class="shop-page" dir="rtl">
+    <section class="page-hero">
 
-        <div class="shop-loading" id="productLoading">
-            <div class="shop-loading-spinner"></div>
-            <p>جاري تحميل المنتج...</p>
-        </div>
+            <p class="section-eyebrow">الخطوة الأخيرة</p>
+            <h1 class="page-hero-title">إتمام الطلب</h1>
+            <p class="page-hero-subtitle">أدخل بياناتك وأكد طلبك — الدفع عند الاستلام</p>
 
-        <div class="shop-error" id="productError" hidden>
-            <p>تعذر تحميل المنتج. قد يكون غير متاح حالياً.</p>
-            <a href="shop.html" class="filter-button">العودة إلى المتجر</a>
-        </div>
+        </section>
 
-        <div id="productContent" hidden>
+        <section class="info-container">
 
-            <nav class="product-breadcrumb" aria-label="مسار التنقل" data-reveal>
-                <a href="index.html">الرئيسية</a>
-                <span aria-hidden="true">/</span>
-                <a href="shop.html">المتجر</a>
-                <span aria-hidden="true">/</span>
-                <span id="productBreadcrumbCategory"></span>
-            </nav>
+            <div class="checkout-loading" id="checkoutLoading" hidden>
+                <div class="shop-loading-spinner"></div>
+                <p>جاري التحقق من السلة...</p>
+            </div>
 
-            <div class="product-detail">
+            <div class="checkout-auth-required" id="checkoutAuthRequired" hidden>
+                <p>يجب تسجيل الدخول لإتمام الطلب.</p>
+                <a href="signin.html?redirect=checkout.html" class="auth-btn" style="display:inline-flex;">تسجيل الدخول</a>
+            </div>
 
-                <!-- Gallery -->
-                <div class="product-gallery" id="productGallery"></div>
+            <div class="checkout-empty" id="checkoutEmpty" hidden>
+                <p>سلتك فارغة — أضف منتجات قبل إتمام الطلب.</p>
+                <a href="shop.html" class="hero-cta">تصفح المتجر</a>
+            </div>
 
-                <!-- Info + Order -->
-                <div class="product-detail-info">
+            <div class="checkout-layout" id="checkoutLayout" hidden>
 
-                    <div id="productBadges"></div>
+                <form id="checkoutForm" class="checkout-form" novalidate>
 
-                    <h1 class="product-detail-title" id="productTitle"></h1>
+                    <div class="checkout-card">
 
-                    <div class="product-detail-price-row" id="productPriceRow"></div>
+                        <h2 class="checkout-card-title">بيانات التوصيل</h2>
 
-                    <p class="product-detail-stock" id="productStock"></p>
-
-                    <div class="product-detail-description" id="productDescription"></div>
-
-                    <div class="product-order-box" id="productOrderBox">
-
-                        <h2 class="product-order-title">اطلب هذا المنتج</h2>
-
-                        <p class="product-order-note">
-                            الدفع عند الاستلام — الشحن عبر المدن المتاحة.
-                        </p>
-
-                        <div class="product-quantity-row">
-                            <label for="orderQuantity" class="product-order-label">الكمية</label>
-                            <div class="quantity-control">
-                                <button type="button" id="quantityMinus" aria-label="إنقاص الكمية">−</button>
-                                <input type="number" id="orderQuantity" value="1" min="1" max="99" inputmode="numeric">
-                                <button type="button" id="quantityPlus" aria-label="زيادة الكمية">+</button>
-                            </div>
+                        <div class="auth-field">
+                            <label for="checkoutName">الاسم الكامل</label>
+                            <input type="text" id="checkoutName" class="auth-input" autocomplete="name" required placeholder="اسمك الكامل">
                         </div>
 
-                        <form id="orderForm" novalidate>
+                        <div class="auth-field">
+                            <label for="checkoutPhone">رقم الهاتف</label>
+                            <input type="tel" id="checkoutPhone" class="auth-input" autocomplete="tel" required placeholder="06XXXXXXXX">
+                        </div>
 
-                            <div class="product-order-field">
-                                <label for="orderName">الاسم الكامل <span class="required-mark">*</span></label>
-                                <input type="text" id="orderName" class="order-input" autocomplete="name" required>
-                            </div>
+                        <div class="auth-field">
+                            <label for="checkoutCity">المدينة</label>
+                            <input type="text" id="checkoutCity" class="auth-input" autocomplete="address-level2" required placeholder="اسم مدينتك">
+                        </div>
 
-                            <div class="product-order-field">
-                                <label for="orderPhone">رقم الهاتف <span class="required-mark">*</span></label>
-                                <input type="tel" id="orderPhone" class="order-input is-ltr" dir="ltr" autocomplete="tel" required>
-                            </div>
+                        <div class="auth-field">
+                            <label for="checkoutAddress">العنوان الكامل</label>
+                            <input type="text" id="checkoutAddress" class="auth-input" autocomplete="street-address" required placeholder="الحي، الشارع، رقم المنزل...">
+                        </div>
 
-                            <div class="product-order-field">
-                                <label for="orderEmail">البريد الإلكتروني (اختياري)</label>
-                                <input type="email" id="orderEmail" class="order-input is-ltr" dir="ltr" autocomplete="email">
-                            </div>
-
-                            <div class="product-order-field">
-                                <label for="orderCity">المدينة <span class="required-mark">*</span></label>
-                                <input type="text" id="orderCity" class="order-input" autocomplete="address-level2" required>
-                            </div>
-
-                            <div class="product-order-field">
-                                <label for="orderAddress">العنوان <span class="required-mark">*</span></label>
-                                <textarea id="orderAddress" class="order-input" rows="2" autocomplete="street-address" required></textarea>
-                            </div>
-
-                            <div class="product-order-field">
-                                <label for="orderNotes">ملاحظات (اختياري)</label>
-                                <textarea id="orderNotes" class="order-input" rows="2"></textarea>
-                            </div>
-
-                            <button type="submit" class="order-submit" id="orderSubmitButton">
-                                <span id="orderSubmitLabel">تأكيد الطلب</span>
-                            </button>
-
-                        </form>
+                        <div class="auth-field">
+                            <label for="checkoutNotes">ملاحظات (اختياري)</label>
+                            <textarea id="checkoutNotes" class="auth-input auth-textarea" rows="3" placeholder="أي ملاحظات إضافية حول الطلب"></textarea>
+                        </div>
 
                     </div>
 
-                    <div class="order-success" id="orderSuccess" hidden>
-                        <h2>تم استلام طلبك بنجاح</h2>
-                        <p>رقم الطلب: <strong id="orderSuccessNumber"></strong></p>
-                        <p id="orderSuccessTotal"></p>
-                        <p class="order-success-note">
-                            سيتواصل معك فريقنا لتأكيد الطلب والشحن. الدفع عند الاستلام.
-                        </p>
-                        <a href="shop.html" class="filter-button">متابعة التسوق</a>
+                    <div class="checkout-actions">
+                        <button type="submit" class="auth-btn" id="checkoutSubmitButton">
+                            <span id="checkoutSubmitLabel">تأكيد الطلب — الدفع عند الاستلام</span>
+                        </button>
+                        <a href="shop.html" class="checkout-back-link">العودة إلى المتجر</a>
                     </div>
 
-                </div>
+                </form>
+
+                <aside class="checkout-summary">
+
+                    <h2 class="checkout-card-title">ملخص الطلب</h2>
+
+                    <div class="checkout-summary-items" id="checkoutSummaryItems"></div>
+
+                    <div class="checkout-totals">
+                        <div class="checkout-total-row">
+                            <span>المجموع الفرعي</span>
+                            <span id="checkoutSubtotal">0 DH</span>
+                        </div>
+                        <div class="checkout-total-row">
+                            <span>رسوم التوصيل</span>
+                            <span id="checkoutShipping">0 DH</span>
+                        </div>
+                        <div class="checkout-total-row checkout-total-row-final">
+                            <span>الإجمالي</span>
+                            <strong id="checkoutTotal">0 DH</strong>
+                        </div>
+                    </div>
+
+                    <p class="checkout-payment-note">
+                        الدفع نقداً عند استلام الطلب. سيتم التواصل معك لتأكيد الطلب.
+                    </p>
+
+                    <div class="checkout-error" id="checkoutError" role="alert" hidden></div>
+
+                </aside>
 
             </div>
 
-        </div>
-
-    </main>
+        </section>
 
 
     <!-- =========================
          Footer
     ========================== -->
 
-<footer class="footer">
+    <footer class="footer">
 
         <div class="footer-container">
 
@@ -774,14 +761,13 @@
     <!-- Account -->
     <script src="js/account-menu.js"></script>
 
-    <!-- Main Script -->
-    <script src="js/script.js"></script>
-
     <!-- Footer -->
     <script src="js/footer.js"></script>
 
-    <!-- Product Detail -->
-    <script src="js/product.js"></script>
+    <!-- Main Script -->
+    <script src="js/script.js"></script>
+
+<script src=js/checkout.js></script>
 
 
 

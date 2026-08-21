@@ -99,8 +99,7 @@
                 event.preventDefault();
                 var term = input.value.trim();
                 if (term.length > 0) {
-                    clearTimeout(debounceTimer);
-                    runSearch(term);
+                    window.location.href = "search.html?q=" + encodeURIComponent(term);
                 }
             }
         });

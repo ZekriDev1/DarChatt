@@ -27,6 +27,10 @@
             '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20H21"/><path d="M16.5 3.5C17.1 2.9 18.2 2.9 18.8 3.5C19.4 4.1 19.4 5.2 18.8 5.8L7 17.5L3 18.5L4 14.5L16.5 3.5Z"/></svg>',
         store:
             '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9L4.5 4H19.5L21 9"/><path d="M3 9V20H21V9"/><path d="M3 9C3 10.7 4.3 12 6 12C7.7 12 9 10.7 9 9C9 10.7 10.3 12 12 12C13.7 12 15 10.7 15 9C15 10.7 16.3 12 18 12C19.7 12 21 10.7 21 9"/></svg>',
+        users:
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20C2.5 16.5 5.4 14 9 14C12.6 14 15.5 16.5 15.5 20"/><path d="M16 5.2C17.2 5.7 18 6.9 18 8.2C18 9.5 17.2 10.7 16 11.2"/><path d="M18.5 14.3C20.1 15.2 21 16.9 21 18.7V20"/></svg>',
+        shipping:
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6H15V17H2V6Z"/><path d="M15 9H19L22 12.5V17H15V9Z"/><circle cx="6" cy="19" r="1.8"/><circle cx="18" cy="19" r="1.8"/></svg>',
         logout:
             '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 12H3"/><path d="M6 8L2 12L6 16"/><path d="M10 4H19C20.1 4 21 4.9 21 6V18C21 19.1 20.1 20 19 20H10"/></svg>'
     };
@@ -45,7 +49,26 @@
         },
         {
             items: [
-                { key: "website-editor", label: "محرر الموقع", href: "/admin/website-editor.html", icon: "editor" }
+                { key: "orders", label: "الطلبات", href: "/admin/orders.html", icon: "orders" },
+                { key: "customers", label: "العملاء", href: "/admin/customers.html", icon: "customers" }
+            ]
+        },
+        {
+            items: [
+                { key: "users", label: "المستخدمون", href: "/admin/users.html", icon: "users" },
+                { key: "shipping", label: "الشحن والتوصيل", href: "/admin/shipping.html", icon: "shipping" }
+            ]
+        },
+        {
+            items: [
+                { key: "website-editor", label: "محرر الموقع", href: "/admin/website-editor.html", icon: "editor" },
+                { key: "settings", label: "الإعدادات", href: "/admin/settings.html", icon: "settings" }
+            ]
+        },
+        {
+            items: [
+                { key: "activity", label: "نشاط الإدارة", href: "/admin/activity.html", icon: "activity" },
+                { key: "profile", label: "الملف الشخصي", href: "/admin/profile.html", icon: "profile" }
             ]
         }
     ];

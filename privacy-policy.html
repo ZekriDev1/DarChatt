@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>تفاصيل المنتج — دار الشاط</title>
+    <title>سياسة الخصوصية — دار الشاط</title>
 
     <meta
         name="description"
-        content="تفاصيل المنتج"
+        content="سياسة الخصوصية لموقع دار الشاط."
     >
 
     <link rel="stylesheet" href="css/style.css">
@@ -20,7 +20,6 @@
     <!-- =========================
          Navigation Bar
     ========================== -->
-
 <nav class="navbar" dir="rtl">
 
         <div class="nav-container">
@@ -535,131 +534,91 @@
     </aside>
 
 
+
     <!-- =========================
-         Product Detail
+         Main Content
     ========================== -->
 
-    <main class="shop-page" dir="rtl">
+    <section class="page-hero">
 
-        <div class="shop-loading" id="productLoading">
-            <div class="shop-loading-spinner"></div>
-            <p>جاري تحميل المنتج...</p>
-        </div>
+            <p class="section-eyebrow">وثائق الموقع</p>
+            <h1 class="page-hero-title">سياسة الخصوصية</h1>
+            <p class="page-hero-subtitle">كيف نتعامل مع بياناتك الشخصية ونحميها</p>
 
-        <div class="shop-error" id="productError" hidden>
-            <p>تعذر تحميل المنتج. قد يكون غير متاح حالياً.</p>
-            <a href="shop.html" class="filter-button">العودة إلى المتجر</a>
-        </div>
+        </section>
 
-        <div id="productContent" hidden>
+        <section class="info-container">
 
-            <nav class="product-breadcrumb" aria-label="مسار التنقل" data-reveal>
-                <a href="index.html">الرئيسية</a>
-                <span aria-hidden="true">/</span>
-                <a href="shop.html">المتجر</a>
-                <span aria-hidden="true">/</span>
-                <span id="productBreadcrumbCategory"></span>
-            </nav>
-
-            <div class="product-detail">
-
-                <!-- Gallery -->
-                <div class="product-gallery" id="productGallery"></div>
-
-                <!-- Info + Order -->
-                <div class="product-detail-info">
-
-                    <div id="productBadges"></div>
-
-                    <h1 class="product-detail-title" id="productTitle"></h1>
-
-                    <div class="product-detail-price-row" id="productPriceRow"></div>
-
-                    <p class="product-detail-stock" id="productStock"></p>
-
-                    <div class="product-detail-description" id="productDescription"></div>
-
-                    <div class="product-order-box" id="productOrderBox">
-
-                        <h2 class="product-order-title">اطلب هذا المنتج</h2>
-
-                        <p class="product-order-note">
-                            الدفع عند الاستلام — الشحن عبر المدن المتاحة.
-                        </p>
-
-                        <div class="product-quantity-row">
-                            <label for="orderQuantity" class="product-order-label">الكمية</label>
-                            <div class="quantity-control">
-                                <button type="button" id="quantityMinus" aria-label="إنقاص الكمية">−</button>
-                                <input type="number" id="orderQuantity" value="1" min="1" max="99" inputmode="numeric">
-                                <button type="button" id="quantityPlus" aria-label="زيادة الكمية">+</button>
-                            </div>
-                        </div>
-
-                        <form id="orderForm" novalidate>
-
-                            <div class="product-order-field">
-                                <label for="orderName">الاسم الكامل <span class="required-mark">*</span></label>
-                                <input type="text" id="orderName" class="order-input" autocomplete="name" required>
-                            </div>
-
-                            <div class="product-order-field">
-                                <label for="orderPhone">رقم الهاتف <span class="required-mark">*</span></label>
-                                <input type="tel" id="orderPhone" class="order-input is-ltr" dir="ltr" autocomplete="tel" required>
-                            </div>
-
-                            <div class="product-order-field">
-                                <label for="orderEmail">البريد الإلكتروني (اختياري)</label>
-                                <input type="email" id="orderEmail" class="order-input is-ltr" dir="ltr" autocomplete="email">
-                            </div>
-
-                            <div class="product-order-field">
-                                <label for="orderCity">المدينة <span class="required-mark">*</span></label>
-                                <input type="text" id="orderCity" class="order-input" autocomplete="address-level2" required>
-                            </div>
-
-                            <div class="product-order-field">
-                                <label for="orderAddress">العنوان <span class="required-mark">*</span></label>
-                                <textarea id="orderAddress" class="order-input" rows="2" autocomplete="street-address" required></textarea>
-                            </div>
-
-                            <div class="product-order-field">
-                                <label for="orderNotes">ملاحظات (اختياري)</label>
-                                <textarea id="orderNotes" class="order-input" rows="2"></textarea>
-                            </div>
-
-                            <button type="submit" class="order-submit" id="orderSubmitButton">
-                                <span id="orderSubmitLabel">تأكيد الطلب</span>
-                            </button>
-
-                        </form>
-
-                    </div>
-
-                    <div class="order-success" id="orderSuccess" hidden>
-                        <h2>تم استلام طلبك بنجاح</h2>
-                        <p>رقم الطلب: <strong id="orderSuccessNumber"></strong></p>
-                        <p id="orderSuccessTotal"></p>
-                        <p class="order-success-note">
-                            سيتواصل معك فريقنا لتأكيد الطلب والشحن. الدفع عند الاستلام.
-                        </p>
-                        <a href="shop.html" class="filter-button">متابعة التسوق</a>
-                    </div>
-
-                </div>
-
+            <div class="info-block">
+                <h2>1. البيانات التي نجمعها</h2>
+                <p>
+                    نجمع البيانات التي تقدمها لنا عند إنشاء الحساب أو إتمام الطلب، وتشمل:
+                    الاسم الكامل، البريد الإلكتروني، رقم الهاتف، المدينة والعنوان.
+                    كما قد نجمع بيانات الاستخدام الأساسية لتحسين تجربة التصفح.
+                </p>
             </div>
 
-        </div>
+            <div class="info-block">
+                <h2>2. كيف نستخدم بياناتك</h2>
+                <ul class="info-list">
+                    <li>معالجة طلباتك وتوصيلها والتواصل معك بخصوصها.</li>
+                    <li>تأكيد هويتك وحماية حسابك.</li>
+                    <li>تحسين خدماتنا وتجربة المتجر.</li>
+                    <li>إرسال تحديثات مهمة بخصوص طلباتك.</li>
+                </ul>
+            </div>
 
-    </main>
+            <div class="info-block">
+                <h2>3. مشاركة البيانات</h2>
+                <p>
+                    لا نبيع بياناتك الشخصية لأي طرف ثالث. لا تُشارك بياناتك إلا مع
+                    شركات التوصيل اللازمة لإيصال طلباتك، أو عندما يقتضي القانون ذلك.
+                </p>
+            </div>
+
+            <div class="info-block">
+                <h2>4. حماية البيانات</h2>
+                <p>
+                    نستخدم تدابير تقنية وتنظيمية مناسبة لحماية بياناتك، بما في ذلك
+                    التخزين الآمن عبر منصة Supabase وتشفير الاتصالات. كلمات المرور
+                    تُخزن بشكل مشفر ولا تكون متاحة لأي شخص.
+                </p>
+            </div>
+
+            <div class="info-block">
+                <h2>5. ملفات تعريف الارتباط</h2>
+                <p>
+                    يستخدم الموقع التخزين المحلي في متصفحك لحفظ سلة التسوق والتفضيلات
+                    الأساسية. يمكنك مسح هذه البيانات من إعدادات متصفحك في أي وقت.
+                </p>
+            </div>
+
+            <div class="info-block">
+                <h2>6. حقوقك</h2>
+                <ul class="info-list">
+                    <li>الاطلاع على بياناتك الشخصية وتصحيحها من صفحة حسابك.</li>
+                    <li>طلب حذف حسابك وبياناتك عبر التواصل معنا.</li>
+                    <li>إلغاء الاشتراك في أي تواصل تسويقي.</li>
+                </ul>
+            </div>
+
+            <div class="info-block">
+                <h2>7. التواصل</h2>
+                <p>
+                    لأي استفسار بخصوص سياسة الخصوصية، تواصل معنا عبر
+                    <a href="mailto:contact@darchatt.com" dir="ltr">contact@darchatt.com</a>
+                    أو الهاتف <a href="tel:0631484377" dir="ltr">0631484377</a>.
+                </p>
+            </div>
+
+        </section>
 
 
     <!-- =========================
          Footer
     ========================== -->
 
-<footer class="footer">
+    <footer class="footer">
 
         <div class="footer-container">
 
@@ -774,14 +733,13 @@
     <!-- Account -->
     <script src="js/account-menu.js"></script>
 
-    <!-- Main Script -->
-    <script src="js/script.js"></script>
-
     <!-- Footer -->
     <script src="js/footer.js"></script>
 
-    <!-- Product Detail -->
-    <script src="js/product.js"></script>
+    <!-- Main Script -->
+    <script src="js/script.js"></script>
+
+
 
 
 

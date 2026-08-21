@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة المستخدمين — دار الشاط</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+    <div class="admin-loading" id="adminLoading">
+        <div class="admin-loading-spinner"></div>
+        <div class="admin-loading-text">جاري التحقق من الصلاحيات...</div>
+    </div>
+
+    <div class="admin-layout" id="adminLayout" hidden>
+
+        <aside class="admin-sidebar" id="adminSidebar"></aside>
+
+        <div class="admin-main">
+
+            <header class="admin-topbar" id="adminTopbar"></header>
+
+            <main class="admin-content">
+
+                <div class="admin-card">
+                    <div class="admin-card-header">
+                        <h2 class="admin-card-title">إدارة المستخدمين</h2>
+                    </div>
+
+                    <div class="admin-toolbar">
+                        <input
+                            type="text"
+                            class="admin-input"
+                            id="userSearch"
+                            placeholder="بحث بالاسم أو البريد الإلكتروني..."
+                            autocomplete="off"
+                        >
+                        <select class="admin-select" id="roleFilter">
+                            <option value="all">الدور: الكل</option>
+                            <option value="customer">عميل</option>
+                            <option value="admin">مدير</option>
+                        </select>
+                    </div>
+
+                    <div class="admin-table-wrap">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>الاسم</th>
+                                    <th>البريد الإلكتروني</th>
+                                    <th>الدور</th>
+                                    <th>رقم الهاتف</th>
+                                    <th>تاريخ التسجيل</th>
+                                    <th>الإجراءات</th>
+                                </tr>
+                            </thead>
+                            <tbody id="usersTableBody">
+                                <tr>
+                                    <td colspan="7" class="cell-muted">جاري تحميل المستخدمين...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="admin-pagination" id="usersPagination" hidden>
+                        <span class="admin-pagination-info" id="usersCount"></span>
+                        <span class="admin-pagination-buttons" id="usersPages"></span>
+                    </div>
+
+                    <div class="admin-empty" id="usersEmpty" hidden>
+                        <div class="admin-empty-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="8" r="3.5"/>
+                                <path d="M2.5 20C2.5 16.5 5.4 14 9 14C12.6 14 15.5 16.5 15.5 20"/>
+                                <path d="M16 5.2C17.2 5.7 18 6.9 18 8.2C18 9.5 17.2 10.7 16 11.2"/>
+                                <path d="M18.5 14.3C20.1 15.2 21 16.9 21 18.7V20"/>
+                            </svg>
+                        </div>
+                        <h2 id="usersEmptyTitle">لا يوجد مستخدمون</h2>
+                        <p id="usersEmptyText">لا توجد نتائج مطابقة.</p>
+                        <button type="button" class="admin-btn" id="retryUsersButton" hidden>
+                            إعادة المحاولة
+                        </button>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <div class="admin-toast" id="adminToast" hidden></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/supabase-config.js"></script>
+    <script src="../js/supabase.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/layout.js"></script>
+    <script src="js/shared.js"></script>
+    <script src="js/pages/users.js"></script>
+
+</body>
+</html>
