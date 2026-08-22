@@ -322,7 +322,26 @@
         return readWishlist().indexOf(product.id) !== -1;
     }
 
-    function toggleWishlist(button) {
+    async function isLoggedIn() {
+        if (!supabase) return false;
+
+        try {
+            var result = await supabase.auth.getSession();
+            return !result.error && !!(result.data && result.data.session);
+        } catch (err) {
+            return false;
+        }
+    }
+
+    async function toggleWishlist(button) {
+        // Wishlist requires an account — show the login popup otherwise.
+        if (!(await isLoggedIn())) {
+            if (window.DarChattAuthPopup) {
+                window.DarChattAuthPopup.show();
+            }
+            return;
+        }
+
         var ids = readWishlist();
         var index = ids.indexOf(product.id);
 

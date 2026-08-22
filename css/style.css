@@ -3843,6 +3843,10 @@ body.search-open {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 16px;
+    /* Definite width: prevents auto-fit from mis-counting tracks
+       when the grid is a stretched flex item (caused horizontal
+       scroll on phones) */
+    width: 100%;
 }
 
 .about-feature {
@@ -4367,4 +4371,175 @@ body.search-open {
         animation: none;
         transition: none;
     }
+}
+
+/* =========================
+   SMALL SCREENS — INFO PAGES (about / faq / policies)
+========================= */
+
+@media (max-width: 480px) {
+
+    .page-hero {
+        padding: 36px 16px 24px;
+    }
+
+    .page-hero-title {
+        font-size: 24px;
+    }
+
+    .info-container {
+        padding: 24px 14px 48px;
+        gap: 14px;
+    }
+
+    .info-block {
+        padding: 20px 18px;
+    }
+
+    /* Stack the feature cards on narrow phones */
+    .about-features {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+}
+
+/* =========================
+   AUTH POPUP (login required)
+======================== */
+
+body.auth-popup-open {
+    overflow: hidden;
+}
+
+.auth-popup-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(17, 17, 17, 0.55);
+    opacity: 0;
+    visibility: hidden;
+    transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease;
+}
+
+.auth-popup-overlay.is-open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.auth-popup {
+    position: relative;
+    width: min(400px, 100%);
+    background: var(--white);
+    border-radius: 14px;
+    padding: 34px 28px 28px;
+    text-align: center;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+    transform: translateY(14px) scale(0.97);
+    transition: transform 0.25s ease;
+}
+
+.auth-popup-overlay.is-open .auth-popup {
+    transform: none;
+}
+
+.auth-popup-close {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+.auth-popup-close:hover {
+    background: #F4F4F4;
+    color: var(--black);
+}
+
+.auth-popup-icon {
+    width: 62px;
+    height: 62px;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(212, 175, 55, 0.14);
+    color: var(--gold-dark);
+}
+
+.auth-popup-icon svg {
+    width: 28px;
+    height: 28px;
+}
+
+.auth-popup-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 8px;
+}
+
+.auth-popup-text {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.9;
+}
+
+.auth-popup-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 22px;
+}
+
+.auth-popup-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    transition:
+        filter 0.2s ease,
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.auth-popup-btn-primary {
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: var(--black);
+}
+
+.auth-popup-btn-primary:hover {
+    filter: brightness(1.05);
+}
+
+.auth-popup-btn-secondary {
+    background: var(--white);
+    color: var(--black);
+    border: 1px solid var(--border);
+}
+
+.auth-popup-btn-secondary:hover {
+    border-color: var(--gold);
+    color: var(--gold-dark);
 }

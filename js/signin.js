@@ -30,7 +30,7 @@
     function getRedirectTarget() {
         try {
             var redirect = new URLSearchParams(window.location.search).get("redirect");
-            if (redirect && /^[a-zA-Z0-9_\-./]+$/.test(redirect) && redirect.indexOf("//") === -1) {
+            if (redirect && /^[a-zA-Z0-9_\-./?=&]+$/.test(redirect) && redirect.indexOf("//") === -1) {
                 return redirect;
             }
         } catch (err) {}
